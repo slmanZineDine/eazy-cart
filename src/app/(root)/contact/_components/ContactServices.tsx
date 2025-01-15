@@ -26,7 +26,7 @@ const ContactServices = () => {
                 </span>
                 <h3>{service.title}</h3>
               </div>
-              <p className="indent-4 text-border">
+              <p className="indent-4 text-muted-foreground">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
                 quos deserunt alias consequatur labore quod placeat.
               </p>

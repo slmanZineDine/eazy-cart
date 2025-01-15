@@ -3,7 +3,7 @@ import { Clock, Mail, MapPinHouse, Phone } from "lucide-react";
 
 const ConnectionInfo = () => {
   return (
-    <ul className="mt-4 space-y-2">
+    <ul className="mt-4 space-y-2 text-muted-foreground">
       <li className="flex items-center gap-3">
         <Phone size={20} className="shrink-0 text-primary" /> +7(684)555-0102
       </li>

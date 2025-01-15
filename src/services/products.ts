@@ -17,12 +17,12 @@ export async function getAllProducts({ limit }: TParma = {}) {
   const queryParameters = [{ key: "limit", value: limit }];
   const fullURL = buildURLWithQueryParamsArray(URL, queryParameters);
 
-  const products = await fetchData<TProduct[]>(fullURL);
+  const products = await fetchData<TProduct[]>(fullURL, {
+    cache: "force-cache",
+    next: {
+      revalidate: 3600, // 1 hours
+    },
+  });
 
   return products;
-  //   const products = await fetchData<TProduct[]>(fullURL, {
-  //     next: {
-  //       revalidate: 3600, // 1 hours
-  //     },
-  //   });
 }

@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="grid w-full grid-cols-1 md:w-2/3 xs:grid-cols-3">
           <section>
             <h2 className="mb-4 text-xl font-bold text-secondary">Company</h2>
-            <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 xs:flex-col xs:items-start xs:divide-x-0">
+            <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">
               <li className="border-secondary ps-2">About Us</li>
               <li className="border-secondary ps-2">Services</li>
               <li className="border-secondary ps-2">Case Studies</li>
@@ -28,7 +28,7 @@ const Footer = () => {
           </section>
           <section>
             <h2 className="mb-4 text-xl font-bold text-secondary">Account</h2>
-            <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 xs:flex-col xs:items-start xs:divide-x-0">
+            <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">
               <li className="border-secondary ps-2">Sign In</li>
               <li className="border-secondary ps-2">View Cart</li>
               <li className="border-secondary ps-2">My Wishlist</li>

@@ -8,7 +8,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   return (
-    <header className="fixed inset-x-0 bottom-4 z-50 w-full rounded-full bg-background transition-[bottom] duration-500 min700:bottom-[calc(100%-var(--header-height))] min700:rounded-none">
+    <header className="fixed inset-x-0 bottom-4 z-50 w-full rounded-full bg-background drop-shadow-md transition-[bottom] duration-500 min700:bottom-[calc(100%-var(--header-height))] min700:rounded-none">
       <nav className="flex-between container relative h-headerHeight">
         <Logo />
         <Navbar />

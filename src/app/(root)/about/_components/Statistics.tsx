@@ -35,7 +35,7 @@ const Statistics = () => {
 
   return (
     <section className="section-padding">
-      <div className="container grid grid-cols-1 gap-4 bg-[#f4eaea] p-4 sm:grid-cols-2 md:grid-cols-4">
+      <div className="bg-cardLighter container grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-4">
         {data.map((item) => (
           <div
             key={item.id}

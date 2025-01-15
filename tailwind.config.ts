@@ -15,7 +15,7 @@ export default {
       },
       backgroundImage: {
         heroGradient:
-          "linear-gradient(180deg, hsl(var(--primary-foreground)), hsl(var(--secondary-foreground)))",
+          "linear-gradient(180deg, hsl(var(--card-light)), hsl(var(--card-lighter)))",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -58,6 +58,8 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        cardLight: "hsl(var(--card-light))",
+        cardLighter: "hsl(var(--card-lighter))",
       },
       screens: {
         xs: "576px",

@@ -17,7 +17,7 @@ const SectionTitle = ({
         {title} <span className="text-primary">{mainWord}</span>
       </h2>
       {hasSubTitle && (
-        <p className="mx-auto -mt-4 max-w-96 text-center text-border">
+        <p className="mx-auto -mt-4 max-w-96 text-center text-muted-foreground">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos
           temporibus blanditiis praesentium.
         </p>

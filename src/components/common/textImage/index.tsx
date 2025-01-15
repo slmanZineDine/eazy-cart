@@ -15,7 +15,7 @@ const TextImage = ({
       <div className="flex-between container flex-col gap-8 lg:flex-row lg:items-start">
         <div>
           {children}
-          <div>
+          <div className="text-muted-foreground">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Doloremque, id necessitatibus ipsam suscipit quibusdam sint sit

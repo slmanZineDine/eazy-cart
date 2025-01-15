@@ -13,7 +13,7 @@ type TAddToCartBtnProps = {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AddToCartBtn = ({ product }: TAddToCartBtnProps) => {
   return (
-    <Button className="group overflow-hidden bg-primary-foreground text-primary hover:bg-primary-foreground/80">
+    <Button className="group overflow-hidden bg-[#d4eee2] text-primary hover:bg-[#d4eee2]">
       <ShoppingCart className="-translate-x-10 transition-transform duration-300 group-hover:translate-x-0" />{" "}
       Add
     </Button>

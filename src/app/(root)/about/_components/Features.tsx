@@ -59,7 +59,7 @@ const Features = () => {
                 </p>
               </CardContent>
               <CardFooter>
-                <Button className="mx-auto bg-primary-foreground text-primary hover:bg-primary-foreground/80">
+                <Button className="mx-auto bg-[#d4eee2] text-primary hover:bg-[#d4eee2]/90">
                   Read More
                 </Button>
               </CardFooter>

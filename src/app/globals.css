@@ -30,20 +30,24 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
+    /* ===== Additional Colors ===== */
+    --card-light: 152, 43%, 88%; /* #d4eee2 */
+    --card-lighter: 40, 45%, 92%; /* #f4eee2 */
+
     /* ===== SPACE ===== */
     --header-height: 5rem;
   }
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 0, 0%, 7%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --primary: 152 68% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 40 45% 92%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 217.2 32.6% 17.5%;
@@ -58,6 +62,10 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* ===== Additional Colors ===== */
+    --card-light: 145, 18%, 20%; /* #2a3d32 */
+    --card-lighter: 0, 18%, 20%; /* #3d2a2a */
   }
 }
 

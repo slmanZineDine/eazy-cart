@@ -1,11 +1,18 @@
 "use client";
 
-import { Moon } from "lucide-react";
+// Third-Party =====> next-themes
+import { useTheme } from "next-themes";
+// Icons
+import { Moon, Sun } from "lucide-react";
 
 const ThemeSwitcher = () => {
+  // ################### NEXT-THEMES HOOKS ###################
+  const { setTheme } = useTheme();
+
   return (
-    <div>
-      <Moon className="cursor-pointer" />
+    <div className="cursor-pointer">
+      <Sun className="dark:hidden" onClick={() => setTheme("dark")} />
+      <Moon className="hidden dark:block" onClick={() => setTheme("light")} />
     </div>
   );
 };

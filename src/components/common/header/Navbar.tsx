@@ -1,5 +1,7 @@
 "use client";
 
+// Next
+import { usePathname } from "next/navigation";
 // My-Components
 import CustomLink from "../customLink";
 // My-Hooks
@@ -8,12 +10,10 @@ import useOutsideClick from "@/hooks/common/useOutsideClick";
 import { House, Menu, MessageCircle, Pencil, Users, X } from "lucide-react";
 // Data
 import { paths } from "@/constants/paths";
-import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   // ################### NEXT HOOKS ###################
   const pathName = usePathname();
-  console.log(pathName);
 
   // ################### CUSTOM HOOKS ###################
   const [isOpen, setIsOpen, navbarRef] = useOutsideClick<HTMLUListElement>();
@@ -60,7 +60,7 @@ const Navbar = () => {
           {links.map((link) => (
             <li key={link.id} className="min700:h-full">
               <CustomLink
-                className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-border transition-colors hover:text-secondary min700:h-full`}
+                className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
                 href={link.href}
               >
                 {link.icon}
