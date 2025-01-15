@@ -6,9 +6,11 @@ import Categories from "./Categories";
 import SectionTitle from "@/components/common/sectionTitle";
 import SkeletonCard from "@/components/common/loading/SkeletonCard";
 
-const ShopByCategory = () => {
+const ShopByCategory = ({ category }: { category: string }) => {
+  console.log(category);
+
   return (
-    <section className="section-padding">
+    <section id="shop" className="section-padding min700:scroll-m-headerHeight">
       <div className="container">
         <SectionTitle title="Shop By" mainWord="Category" />
         <Categories />
@@ -21,7 +23,7 @@ const ShopByCategory = () => {
             </div>
           }
         >
-          <Products />
+          <Products category={category} />
         </Suspense>
       </div>
     </section>

@@ -1,13 +1,20 @@
 "use client";
 
 // Next
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-// My-Components
-import CustomLink from "../customLink";
 // My-Hooks
 import useOutsideClick from "@/hooks/common/useOutsideClick";
 // Icons
-import { House, Menu, MessageCircle, Pencil, Users, X } from "lucide-react";
+import {
+  House,
+  Menu,
+  MessageCircle,
+  Pencil,
+  Store,
+  Users,
+  X,
+} from "lucide-react";
 // Data
 import { paths } from "@/constants/paths";
 
@@ -34,12 +41,18 @@ const Navbar = () => {
     },
     {
       id: 3,
+      title: "Shop",
+      icon: <Store className="cursor-pointer min700:hidden" />,
+      href: "#shop",
+    },
+    {
+      id: 4,
       title: "Our Team",
       icon: <Users className="cursor-pointer min700:hidden" />,
       href: paths.ourTeam.root,
     },
     {
-      id: 4,
+      id: 5,
       title: "Contact",
       icon: <MessageCircle className="cursor-pointer min700:hidden" />,
       href: paths.contact.root,
@@ -58,19 +71,24 @@ const Navbar = () => {
           ref={navbarRef}
         >
           {links.map((link) => (
-            <li key={link.id} className="min700:h-full">
-              <CustomLink
+            <li
+              key={link.id}
+              className="min700:h-full"
+              onClick={() => setIsOpen(false)}
+            >
+              <Link
                 className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
                 href={link.href}
+                prefetch={false}
               >
                 {link.icon}
                 {link.title}
-              </CustomLink>
+              </Link>
             </li>
           ))}
         </ul>
         <X
-          className="ms-auto cursor-pointer min700:hidden"
+          className="ms-auto cursor-pointer text-muted-foreground transition-colors hover:text-secondary min700:hidden"
           size={30}
           onClick={() => setIsOpen(false)}
         />

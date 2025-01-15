@@ -19,6 +19,7 @@ const SocialMedia = () => {
             height={24}
             src={`/assets/svg/social-media/${title}.svg`}
             alt={`${title} Link.`}
+            className="cursor-pointer transition-transform hover:scale-110"
           />
         </li>
       ))}

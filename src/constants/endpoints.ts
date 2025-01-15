@@ -12,5 +12,6 @@ export const endpoints = {
   // =================== Products ===================
   products: {
     root: ROOTS.PRODUCTS,
+    byCategory: `${ROOTS.PRODUCTS}/category`,
   },
 };

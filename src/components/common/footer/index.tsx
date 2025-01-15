@@ -15,7 +15,7 @@ const Footer = () => {
           <SocialMedia />
           <ConnectionInfo />
         </section>
-        <div className="grid w-full grid-cols-1 md:w-2/3 xs:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-6 md:w-2/3 md:gap-4 xs:grid-cols-3">
           <section>
             <h2 className="mb-4 text-xl font-bold text-secondary">Company</h2>
             <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">

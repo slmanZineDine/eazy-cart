@@ -27,7 +27,7 @@ const SpecialProduct = ({ product }: TSpecialProductProps) => {
         </div>
       </CardHeader>
       <CardContent className="flex rotate-2 flex-col justify-center">
-        <CardTitle className="text-base font-bold text-secondary xs:text-lg">
+        <CardTitle className="text-base font-bold leading-tight text-secondary xs:text-lg">
           {product.title}
         </CardTitle>
         <div className="mt-4 flex items-center gap-4">

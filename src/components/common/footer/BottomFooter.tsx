@@ -17,7 +17,7 @@ const BottomFooter = () => {
         . All Right Reserved
       </p>
       <p>
-        Made with By ❤ &nbsp;
+        Made with ❤ By &nbsp;
         <a
           href="https://slmanzinedine.vercel.app/"
           className="font-bold text-primary"

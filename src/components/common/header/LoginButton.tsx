@@ -1,20 +1,22 @@
-// Show user profile icon if use is logging
-
+// Next
+import Link from "next/link";
+// Thrid-Party =====> shadcn-ui
 import { buttonVariants } from "@/components/ui/button";
-import CustomLink from "../customLink";
+// Data
 import { paths } from "@/constants/paths";
 
 const LoginButton = () => {
   return (
-    <CustomLink
+    <Link
       className={`${buttonVariants({
         size: "default",
         variant: "default",
       })} ms-2`}
       href={paths.login}
+      prefetch={false}
     >
       Login
-    </CustomLink>
+    </Link>
   );
 };
 

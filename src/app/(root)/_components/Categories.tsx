@@ -1,3 +1,5 @@
+"use client";
+
 // Third-Party =====>
 import {
   Carousel,
@@ -8,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 // icons
 import { Gem, Grid2x2, PersonStanding, Plug, Shirt } from "lucide-react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Categories = () => {
   // ################### DATA ###################
@@ -38,6 +41,17 @@ const Categories = () => {
       icon: <Plug size={34} className="text-primary" />,
     },
   ];
+  console.log("re-render");
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+  const createPageURL = (pageNumber: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("category", pageNumber.toString());
+    // return `${pathname}?${params.toString()}`;
+    replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
 
   return (
     <Carousel
@@ -52,6 +66,7 @@ const Categories = () => {
           <CarouselItem key={category.id} className="basis-40">
             <div
               className={`flex-between h-full cursor-pointer flex-col gap-2 rounded-xl p-4 text-center transition-all hover:bg-background hover:shadow-md hover:shadow-black/50 ${index % 2 === 0 ? "bg-cardLight" : "bg-cardLighter"}`}
+              onClick={() => createPageURL(category.title)}
             >
               {category.icon}{" "}
               <h3 className="text-md font-bold text-secondary">

@@ -34,7 +34,9 @@ const Product = ({ product }: TProdcutProps) => {
         </div>
       </CardHeader>
       <CardContent>
-        <CardTitle className="text-secondary">{product.title}</CardTitle>
+        <CardTitle className="leading-tight text-secondary">
+          {product.title}
+        </CardTitle>
         <div className="mt-4 flex items-center gap-4">
           <StarsRating rating={product.rating.rate} />
           <span className="text-secondary">({product.rating.rate})</span>
