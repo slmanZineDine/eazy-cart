@@ -7,8 +7,9 @@ const Products = async ({ category }: { category: string }) => {
   // ################### FETCH DATA ###################
   // await new Promise((resolve) => setTimeout(resolve, 5000));
   let products = [];
-  if (category) products = await getProductsByCategroy({ category });
-  else products = await getAllProducts({ limit: 4 });
+  if (category && category !== "All")
+    products = await getProductsByCategroy({ category });
+  else products = await getAllProducts({ limit: 8 });
 
   return (
     <div className="grid grid-cols-autoFill250 gap-4">

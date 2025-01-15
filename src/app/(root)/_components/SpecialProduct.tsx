@@ -15,8 +15,8 @@ type TSpecialProductProps = {
 
 const SpecialProduct = ({ product }: TSpecialProductProps) => {
   return (
-    <Card className="flex -skew-y-2 flex-row">
-      <CardHeader>
+    <Card className="flex -skew-y-2 flex-row gap-6 p-4">
+      <CardHeader className="p-0">
         <div className="relative mx-auto mb-2 h-32 w-20 rotate-2 xs:h-40 xs:w-28">
           <Image
             fill
@@ -26,8 +26,8 @@ const SpecialProduct = ({ product }: TSpecialProductProps) => {
           />
         </div>
       </CardHeader>
-      <CardContent className="flex rotate-2 flex-col justify-center">
-        <CardTitle className="text-base font-bold leading-tight text-secondary xs:text-lg">
+      <CardContent className="flex rotate-2 flex-col justify-center p-0">
+        <CardTitle className="text-md font-bold leading-tight text-secondary xs:text-lg">
           {product.title}
         </CardTitle>
         <div className="mt-4 flex items-center gap-4">

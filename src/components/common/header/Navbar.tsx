@@ -43,7 +43,7 @@ const Navbar = () => {
       id: 3,
       title: "Shop",
       icon: <Store className="cursor-pointer min700:hidden" />,
-      href: "#shop",
+      href: "/#shop",
     },
     {
       id: 4,

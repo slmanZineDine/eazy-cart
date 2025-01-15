@@ -3,20 +3,23 @@ import Hero from "./_components/Hero";
 import ShopByCategory from "./_components/ShopByCategory";
 import FeaturedProducts from "./_components/FeaturedProducts";
 
-export default async function Home({
-  searchParams,
-}: {
+type THomeProps = {
   searchParams: Promise<{
     category?: string;
+    page?: string;
   }>;
-}) {
-  const searchParam = await searchParams;
-  const category = searchParam?.category || "";
+};
+
+export default async function Home(props: THomeProps) {
+  // ################### DATA ###################
+  const searchParams = await props.searchParams;
+  const category = searchParams?.category || "";
+  const page = Number(searchParams?.page) || 1;
 
   return (
     <>
       <Hero />
-      <ShopByCategory category={category} />
+      <ShopByCategory category={category} page={page} />
       <FeaturedProducts />
     </>
   );

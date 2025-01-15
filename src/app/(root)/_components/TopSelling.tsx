@@ -10,7 +10,7 @@ type TTopSellingProps = {
 
 const TopSelling = ({ topSelling }: TTopSellingProps) => {
   return (
-    <div>
+    <div className="w-full">
       <SectionTitle title="Top" mainWord="Selling" />
       <div className="space-y-4">
         {topSelling.map((product) => (

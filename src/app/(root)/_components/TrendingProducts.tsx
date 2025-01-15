@@ -10,7 +10,7 @@ type TTrendingProductsProps = {
 
 const TrendingProducts = ({ trendingProducts }: TTrendingProductsProps) => {
   return (
-    <div>
+    <div className="w-full">
       <SectionTitle title="Trending" mainWord="Products" />
       <div className="space-y-4">
         {trendingProducts.map((product) => (
