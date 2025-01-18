@@ -39,7 +39,9 @@ const Product = ({ product }: TProdcutProps) => {
         </CardTitle>
         <div className="mt-4 flex items-center gap-4">
           <StarsRating rating={product.rating.rate} />
-          <span className="text-secondary">({product.rating.rate})</span>
+          <span className="text-secondary underline">
+            {product.rating.count} REVIEWS
+          </span>
         </div>
       </CardContent>
       <CardFooter className="flex-between mt-auto font-bold text-secondary">

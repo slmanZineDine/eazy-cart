@@ -6,7 +6,7 @@ import FeaturedProducts from "./_components/FeaturedProducts";
 type THomeProps = {
   searchParams: Promise<{
     category?: string;
-    page?: string;
+    // page?: string;
   }>;
 };
 
@@ -14,12 +14,15 @@ export default async function Home(props: THomeProps) {
   // ################### DATA ###################
   const searchParams = await props.searchParams;
   const category = searchParams?.category || "";
-  const page = Number(searchParams?.page) || 1;
+  // const page = Number(searchParams?.page) || 1;
 
   return (
     <>
       <Hero />
-      <ShopByCategory category={category} page={page} />
+      <ShopByCategory
+        category={category}
+        // page={page}
+      />
       <FeaturedProducts />
     </>
   );

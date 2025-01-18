@@ -1,5 +1,5 @@
-// Next
-import Link from "next/link";
+// My-Components
+import CustomLink from "../customLink";
 // Thrid-Party =====> shadcn-ui
 import { buttonVariants } from "@/components/ui/button";
 // Data
@@ -7,7 +7,7 @@ import { paths } from "@/constants/paths";
 
 const LoginButton = () => {
   return (
-    <Link
+    <CustomLink
       className={`${buttonVariants({
         size: "default",
         variant: "default",
@@ -16,7 +16,7 @@ const LoginButton = () => {
       prefetch={false}
     >
       Login
-    </Link>
+    </CustomLink>
   );
 };
 

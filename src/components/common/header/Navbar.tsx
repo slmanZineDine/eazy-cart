@@ -1,8 +1,9 @@
 "use client";
 
 // Next
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+// My-Components
+import CustomLink from "../customLink";
 // My-Hooks
 import useOutsideClick from "@/hooks/common/useOutsideClick";
 // Icons
@@ -62,7 +63,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`${isOpen ? "" : "max700:hidden"} absolute bottom-0 mx-auto w-11/12 rounded-2xl bg-background p-4 min700:static min700:h-full min700:w-auto min700:rounded-none min700:p-0`}
+        className={`${isOpen ? "" : "max700:hidden"} absolute inset-x-0 bottom-0 mx-auto w-11/12 rounded-2xl bg-background p-4 min700:static min700:h-full min700:w-auto min700:rounded-none min700:p-0`}
       >
         <ul
           className={
@@ -76,14 +77,13 @@ const Navbar = () => {
               className="min700:h-full"
               onClick={() => setIsOpen(false)}
             >
-              <Link
+              <CustomLink
                 className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
                 href={link.href}
-                prefetch={false}
               >
                 {link.icon}
                 {link.title}
-              </Link>
+              </CustomLink>
             </li>
           ))}
         </ul>

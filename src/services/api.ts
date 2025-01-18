@@ -21,8 +21,6 @@ export const fetchData = async <T>(
     throw new Error(`Error: ${response.status}`);
   }
 
-  console.log(`${BASE_URL}/${endpoint}`);
-
   return response.json();
   //   return response.json() as Promise<T>;
 };

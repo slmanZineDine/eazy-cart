@@ -8,10 +8,10 @@ import SkeletonCard from "@/components/common/loading/SkeletonCard";
 
 const ShopByCategory = ({
   category,
-  page,
+  // page,
 }: {
   category: string;
-  page: number;
+  // page: number;
 }) => {
   return (
     <section id="shop" className="section-padding min700:scroll-m-headerHeight">
@@ -28,7 +28,10 @@ const ShopByCategory = ({
             </div>
           }
         >
-          <Products category={category} />
+          <Products
+            category={category}
+            // page={page}
+          />
         </Suspense>
       </div>
     </section>

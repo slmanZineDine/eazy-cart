@@ -3,9 +3,16 @@ import Product from "@/components/common/product";
 // API
 import { getAllProducts, getProductsByCategroy } from "@/services/products";
 
-const Products = async ({ category }: { category: string }) => {
+const Products = async ({
+  category,
+  // page,
+}: {
+  category: string;
+  // page: number;
+}) => {
   // ################### FETCH DATA ###################
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+
   let products = [];
   if (category && category !== "All")
     products = await getProductsByCategroy({ category });
