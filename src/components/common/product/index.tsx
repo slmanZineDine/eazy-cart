@@ -15,6 +15,8 @@ import StarsRating from "../rating/StarsRating";
 import { CURRENCY } from "@/constants";
 // Types
 import type { TProduct } from "@/types/product";
+import CustomLink from "../customLink";
+import { paths } from "@/constants/paths";
 
 type TProdcutProps = {
   product: TProduct;
@@ -24,19 +26,24 @@ const Product = ({ product }: TProdcutProps) => {
   return (
     <Card className="flex flex-col">
       <CardHeader>
-        <div className="relative mx-auto mb-2 h-52 w-40">
+        <CustomLink
+          href={`${paths.products.root}/${product.id}`}
+          className="relative mx-auto mb-2 h-52 w-40"
+        >
           <Image
             fill
             src={product.image}
             alt={product.title}
-            className="bg-slate-300"
+            className="bg-slate-300 transition-transform duration-300 hover:scale-105"
           />
-        </div>
+        </CustomLink>
       </CardHeader>
       <CardContent>
-        <CardTitle className="leading-tight text-secondary">
-          {product.title}
-        </CardTitle>
+        <CustomLink href={`${paths.products.root}/${product.id}`}>
+          <CardTitle className="leading-tight text-secondary transition-colors duration-300 hover:text-primary">
+            {product.title}
+          </CardTitle>
+        </CustomLink>
         <div className="mt-4 flex items-center gap-4">
           <StarsRating rating={product.rating.rate} />
           <span className="text-secondary underline">

@@ -72,6 +72,12 @@
   }
 }
 
+@layer components {
+  .icon {
+    @apply cursor-pointer fill-transparent transition-colors duration-300 hover:fill-black dark:hover:fill-white;
+  }
+}
+
 @layer utilities {
   .flex-center {
     display: flex;

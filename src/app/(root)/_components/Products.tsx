@@ -16,7 +16,7 @@ const Products = async ({
   let products = [];
   if (category && category !== "All")
     products = await getProductsByCategroy({ category });
-  else products = await getAllProducts({ limit: 8 });
+  else products = await getAllProducts({ limit: 4 });
 
   return (
     <div className="grid grid-cols-autoFill250 gap-4">

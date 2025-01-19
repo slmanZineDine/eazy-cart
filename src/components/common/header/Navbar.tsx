@@ -95,7 +95,7 @@ const Navbar = () => {
       </div>
       {!isOpen && (
         <Menu
-          className="me-2 ms-auto cursor-pointer min700:hidden"
+          className="me-2 ms-auto shrink-0 cursor-pointer min700:hidden"
           onClick={() => setIsOpen(true)}
         />
       )}

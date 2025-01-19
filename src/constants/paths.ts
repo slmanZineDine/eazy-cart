@@ -9,6 +9,8 @@ const ROOTS = {
   ABOUT: "/about",
   OUR_TEAM: "/our-team",
   CONTACT: "/contact",
+  CART: "/cart",
+  PRODUCTS: "/products",
 
   // ===== PROFILE =====
   USER_PROFILE: "/user-profile",
@@ -32,8 +34,17 @@ export const paths = {
   // ===== CONTACT =====
   contact: { root: ROOTS.CONTACT },
 
+  // ===== CART =====
+  cart: { root: ROOTS.CART },
+
+  // ===== PRODUCTS =====
+  products: { root: ROOTS.PRODUCTS },
+
   // ===== PROFILE =====
   userProfile: {
     root: ROOTS.USER_PROFILE,
   },
+
+  // ===== SHOP HASD =====
+  shop: "/#shop",
 };

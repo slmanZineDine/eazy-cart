@@ -43,3 +43,16 @@ export async function getProductsByCategroy({
 
   return products;
 }
+// =================== Product ===================
+export async function getProduct({ id }: { id: string }) {
+  const URL = `${endpoints.products.root}/${id}`;
+
+  const products = await fetchData<TProduct>(URL, {
+    cache: "force-cache",
+    next: {
+      revalidate: 3600, // 1 hours
+    },
+  });
+
+  return products;
+}
