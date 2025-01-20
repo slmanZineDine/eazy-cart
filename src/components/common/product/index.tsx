@@ -15,7 +15,7 @@ import StarsRating from "../rating/StarsRating";
 import { CURRENCY } from "@/constants";
 // Types
 import type { TProduct } from "@/types/product";
-import CustomLink from "../customLink";
+import CustomLink from "../custom-link";
 import { paths } from "@/constants/paths";
 
 type TProdcutProps = {

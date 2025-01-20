@@ -3,7 +3,7 @@
 // Next
 import { useParams, usePathname } from "next/navigation";
 // My-Components
-import CustomLink from "../customLink";
+import CustomLink from "../custom-link";
 // My-Hooks
 import useOutsideClick from "@/hooks/common/useOutsideClick";
 // Icons

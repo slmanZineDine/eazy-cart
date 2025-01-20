@@ -1,4 +1,4 @@
-import CustomLink from "@/components/common/customLink";
+import CustomLink from "@/components/common/custom-link";
 import { buttonVariants } from "@/components/ui/button";
 import { paths } from "@/constants/paths";
 import { MoveLeft } from "lucide-react";
@@ -27,7 +27,7 @@ const EmptyCart = () => {
             size: "default",
             variant: "default",
           })} ms-2`}
-          href={paths.shop}
+          href={`/${paths.shop}`}
           prefetch={false}
         >
           <MoveLeft />

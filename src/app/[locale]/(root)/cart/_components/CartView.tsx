@@ -4,6 +4,8 @@
 import { selectCartItems, useCartStore } from "@/zustand/cartStore";
 import CartTitle from "./CartTitle";
 import EmptyCart from "./EmptyCart";
+import CartTable from "./CartTable";
+import Invoice from "./Invoice";
 
 const CartView = ({ cart }: { cart: { [key: string]: string } }) => {
   // ################### ZUSTAND ###################
@@ -13,8 +15,11 @@ const CartView = ({ cart }: { cart: { [key: string]: string } }) => {
     return (
       <>
         <CartTitle />
-        <section className="section-padding">
-          <div className="container"></div>
+        <section>
+          <div className="container flex flex-col items-center gap-8 lg:flex-row">
+            <CartTable />
+            <Invoice />
+          </div>
         </section>
       </>
     );

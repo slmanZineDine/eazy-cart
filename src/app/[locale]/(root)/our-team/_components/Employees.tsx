@@ -1,7 +1,7 @@
 // Third-Party =====> shadcn-ui
 // My-Components
-import SectionTitle from "@/components/common/sectionTitle";
-import SocialMedia from "@/components/common/socialMedia";
+import SectionTitle from "@/components/common/section-title";
+import SocialMedia from "@/components/common/social-media";
 
 import Image from "next/image";
 

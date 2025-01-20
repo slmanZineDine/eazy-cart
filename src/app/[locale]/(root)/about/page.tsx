@@ -1,8 +1,8 @@
 // My-Components
 import Features from "./_components/Features";
 import Statistics from "./_components/Statistics";
-import TextImage from "@/components/common/textImage";
-import SectionTitle from "@/components/common/sectionTitle";
+import TextImage from "@/components/common/text-image";
+import SectionTitle from "@/components/common/section-title";
 
 const AboutPage = () => {
   return (

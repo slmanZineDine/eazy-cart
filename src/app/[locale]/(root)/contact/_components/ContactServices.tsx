@@ -1,20 +1,27 @@
+// i18n
+import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 // My-Components
-import SectionTitle from "@/components/common/sectionTitle";
+import SectionTitle from "@/components/common/section-title";
 
-const ContactServices = () => {
+const ContactServices = async () => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { contact } = await getDictionary(locale);
+
   // ################### DATA ###################
   const services = [
-    { id: 1, title: "Visit Feedback" },
-    { id: 2, title: "Employer Services" },
-    { id: 3, title: "Billing Inquiries" },
+    { id: 1, title: contact.services.visitFeedback },
+    { id: 2, title: contact.services.employeeServices },
+    { id: 3, title: contact.services.billingInquiries },
   ];
 
   return (
     <section className="section-padding">
       <div className="container">
         <SectionTitle
-          title="Let us know"
-          mainWord="How We Can Help You"
+          title={contact.serviceTitle}
+          mainWord={contact.serviceHighlight}
           className="!mb-10 text-center"
         />
         <div className="flex-between flex-col gap-6 md:flex-row">
@@ -27,8 +34,7 @@ const ContactServices = () => {
                 <h3>{service.title}</h3>
               </div>
               <p className="indent-4 text-muted-foreground">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                quos deserunt alias consequatur labore quod placeat.
+                {contact.services.description}
               </p>
             </div>
           ))}

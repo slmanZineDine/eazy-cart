@@ -1,6 +1,6 @@
 // My-Components
 import SpecialProduct from "./SpecialProduct";
-import SectionTitle from "@/components/common/sectionTitle";
+import SectionTitle from "@/components/common/section-title";
 // Types
 import type { TProduct } from "@/types/product";
 import getDictionary from "@/utils/translation";

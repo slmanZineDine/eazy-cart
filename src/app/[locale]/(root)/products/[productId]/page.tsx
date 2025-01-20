@@ -1,7 +1,7 @@
 // Next
 import Image from "next/image";
 // My-Components
-import SocialMedia from "@/components/common/socialMedia";
+import SocialMedia from "@/components/common/social-media";
 import StarsRating from "@/components/common/rating/StarsRating";
 import AddToCartBtn from "@/components/common/product/AddToCartBtn";
 // API

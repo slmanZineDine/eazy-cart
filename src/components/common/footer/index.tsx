@@ -1,12 +1,13 @@
 // Next
 import Image from "next/image";
 // My-Components
-import SocialMedia from "../socialMedia";
+import SocialMedia from "../social-media";
 import BottomFooter from "./BottomFooter";
-import SectionTitle from "../sectionTitle";
+import SectionTitle from "../section-title";
 import ConnectionInfo from "./ConnectionInfo";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 import getDictionary from "@/utils/translation";
+import { Languages } from "@/constants/enums";
 
 const Footer = async () => {
   // ################### i18n ###################
@@ -28,7 +29,9 @@ const Footer = async () => {
             <h2 className="mb-4 text-xl font-bold text-secondary">
               {company.title}
             </h2>
-            <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">
+            <ul
+              className={`flex flex-wrap items-center gap-1 divide-x ${locale === Languages.ARABIC ? "divide-x-reverse" : ""} px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0`}
+            >
               <li className="border-secondary ps-2">{company.about}</li>
               <li className="border-secondary ps-2">{company.services}</li>
               <li className="border-secondary ps-2">{company.caseStudies}</li>
@@ -40,7 +43,9 @@ const Footer = async () => {
             <h2 className="mb-4 text-xl font-bold text-secondary">
               {account.title}
             </h2>
-            <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">
+            <ul
+              className={`flex flex-wrap items-center gap-1 divide-x ${locale === Languages.ARABIC ? "divide-x-reverse" : ""} px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0`}
+            >
               <li className="border-secondary ps-2">{account.signIn}</li>
               <li className="border-secondary ps-2">{account.viewCart}</li>
               <li className="border-secondary ps-2">{account.myWishlist}</li>

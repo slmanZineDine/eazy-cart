@@ -30,11 +30,12 @@ const AddToCartBtn = ({ product, className = "" }: TAddToCartBtnProps) => {
 
   // ################### HANDLER ###################
   const handleAddToCart = () => {
-    const { id, title, image, price } = product;
+    const { id, title, image, category, price } = product;
 
     const data = {
       id,
       title,
+      category,
       image,
       basePrice: price,
     };
@@ -51,7 +52,7 @@ const AddToCartBtn = ({ product, className = "" }: TAddToCartBtnProps) => {
     if (currentProduct) {
       setQuantity(currentProduct.quantity!);
     }
-  }, []);
+  }, [product.id]);
 
   if (quantity > 0) {
     return (

@@ -3,7 +3,7 @@
 // Third-Party =====> zustand
 import { selectCartItems, useCartStore } from "@/zustand/cartStore";
 // My-Components
-import SectionTitle from "@/components/common/sectionTitle";
+import SectionTitle from "@/components/common/section-title";
 
 const CartTitle = () => {
   // ################### ZUSTAND ###################

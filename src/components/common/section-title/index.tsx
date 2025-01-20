@@ -2,6 +2,7 @@ type TSectionTitleProps = {
   title?: string;
   mainWord?: string;
   hasSubTitle?: boolean;
+  subTitle?: string;
   className?: string;
 };
 
@@ -9,6 +10,7 @@ const SectionTitle = ({
   title = "",
   mainWord = "",
   hasSubTitle = false,
+  subTitle = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos temporibus blanditiis praesentium.",
   className = "",
 }: TSectionTitleProps) => {
   return (
@@ -18,8 +20,7 @@ const SectionTitle = ({
       </h2>
       {hasSubTitle && (
         <p className="mx-auto -mt-4 max-w-96 text-center text-muted-foreground">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos
-          temporibus blanditiis praesentium.
+          {subTitle}
         </p>
       )}
     </>

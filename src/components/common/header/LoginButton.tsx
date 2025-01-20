@@ -1,11 +1,17 @@
 // My-Components
-import CustomLink from "../customLink";
+import CustomLink from "../custom-link";
 // Thrid-Party =====> shadcn-ui
 import { buttonVariants } from "@/components/ui/button";
 // Data
 import { paths } from "@/constants/paths";
+import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
-const LoginButton = () => {
+const LoginButton = async () => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { navbar } = await getDictionary(locale);
+
   return (
     <CustomLink
       className={`${buttonVariants({
@@ -15,7 +21,7 @@ const LoginButton = () => {
       href={`/${paths.login}`}
       prefetch={false}
     >
-      Login
+      {navbar.login}
     </CustomLink>
   );
 };

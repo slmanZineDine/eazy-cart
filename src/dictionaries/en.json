@@ -10,11 +10,30 @@
       "titleHighlighted": "Category"
     },
     "features": {
-      "top": "Our story",
+      "top": "Top",
       "topHighlighted": "Selling",
       "trending": "Trending ",
       "trendingHighlighted": "Products "
     }
+  },
+  "contact": {
+    "serviceTitle": "Let us know",
+    "serviceHighlight": "How We Can Help You",
+    "services": {
+      "visitFeedback": "Visit Feedback",
+      "employeeServices": "Employer Services",
+      "billingInquiries": "Billing Inquiries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quos deserunt alias consequatur labore quod placeat."
+    },
+    "messageTitle": "Drop Us",
+    "messageTitleHighlight": "a Line",
+    "subTitle": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos temporibus blanditiis praesentium.",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "yourMessage": "message",
+    "messagePlaceholder": "Type your message here.",
+    "sendMessage": "Send Message"
   },
   "navbar": {
     "home": "Home",

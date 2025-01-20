@@ -3,7 +3,7 @@ import { Suspense } from "react";
 // My-Components
 import Products from "./Products";
 import Categories from "./Categories";
-import SectionTitle from "@/components/common/sectionTitle";
+import SectionTitle from "@/components/common/section-title";
 import SkeletonCard from "@/components/common/loading/SkeletonCard";
 
 const ShopByCategory = ({

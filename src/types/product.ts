@@ -10,3 +10,12 @@ export type TProduct = {
     count: number;
   };
 };
+
+export type TCartProduct = {
+  id: number;
+  title: string;
+  image: string;
+  category: string;
+  basePrice: number;
+  quantity?: number;
+};

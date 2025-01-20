@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
-import { i18n, Locale } from "./i18n.config";
+import { i18n } from "./i18n.config";
 
 function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
@@ -38,7 +38,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 
-  const locale = request.url?.split("/")[3] as Locale;
+  const parsedUrl = new URL(request.url);
+  const locale = parsedUrl.pathname.split("/")[1];
   requestHeaders.set("x-locale", locale);
 
   return NextResponse.next({

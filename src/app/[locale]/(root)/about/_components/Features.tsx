@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 // My-Components
-import SectionTitle from "@/components/common/sectionTitle";
+import SectionTitle from "@/components/common/section-title";
 // Icons
 import {
   Gift,

@@ -10,11 +10,30 @@
       "titleHighlighted": "الفئة"
     },
     "features": {
-      "top": "قصتنا",
-      "topHighlighted": "بيع",
-      "trending": "رائج ",
-      "trendingHighlighted": "المنتجات "
+      "top": "الأكثر",
+      "topHighlighted": "مبيعاً",
+      "trending": "الأكثر",
+      "trendingHighlighted": "رواجاً "
     }
+  },
+  "contact": {
+    "serviceTitle": "أخبرنا",
+    "serviceHighlight": "كيف يمكننا مساعدتك",
+    "services": {
+      "visitFeedback": "ملاحظات الزيارة",
+      "employeeServices": "خدمات الموظفين",
+      "billingInquiries": "استفسارات الفواتير",
+      "description": "لوريم إيبسوم هو ببساطة نص شكلي ويُستخدم في صناعات المطابع ودور النشر. لا ينبغي لأحد أن يتخلى عن الآخرين ويسعى جاهداً إلى ما يرضيهم."
+    },
+    "messageTitle": "أرسل لنا",
+    "messageTitleHighlight": "رسالة",
+    "subTitle": "لوريم إيبسوم هو ببساطة نص شكلي ويُستخدم في صناعات المطابع ودور النشر. لا ينبغي لأحد أن يتخلى .",
+    "name": "الاسم",
+    "phone": "الهاتف",
+    "email": "الايميل",
+    "yourMessage": "رسالتك",
+    "messagePlaceholder": "اكتب رسالتك هنا.",
+    "sendMessage": "إرسال رسالة"
   },
   "navbar": {
     "home": "الرئيسية",
@@ -22,7 +41,7 @@
     "shop": "تسوق",
     "ourTeam": "فريقنا",
     "contact": "اتصل",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل"
   },
   "footer": {
     "company": {
