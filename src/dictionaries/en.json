@@ -1,0 +1,49 @@
+{
+  "home": {
+    "hero": {
+      "title": "Online Store Of",
+      "titleHighlighted": "Products With Delivery",
+      "description": "Shop a wide range of products with fast delivery. From tech to fashion, find everything you need in one place. Enjoy great deals and a seamless shopping experience with us."
+    },
+    "category": {
+      "title": "Shop By",
+      "titleHighlighted": "Category"
+    },
+    "features": {
+      "top": "Our story",
+      "topHighlighted": "Selling",
+      "trending": "Trending ",
+      "trendingHighlighted": "Products "
+    }
+  },
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "shop": "Shop",
+    "ourTeam": "Our Team",
+    "contact": "Contact",
+    "login": "Login"
+  },
+  "footer": {
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "services": "Services",
+      "caseStudies": "Case Studies",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "account": {
+      "title": "Account",
+      "signIn": "Sign In",
+      "viewCart": "View Cart",
+      "myWishlist": "My Wishlist",
+      "trackMyOrder": "Track My Order",
+      "compareProducts": "Compare Products"
+    },
+    "download": "Download"
+  },
+  "common": {
+    "add": "Add"
+  }
+}

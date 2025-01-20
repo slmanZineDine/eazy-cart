@@ -5,14 +5,17 @@ import { selectCartItems, useCartStore } from "@/zustand/cartStore";
 import CartTitle from "./CartTitle";
 import EmptyCart from "./EmptyCart";
 
-const CartView = () => {
+const CartView = ({ cart }: { cart: { [key: string]: string } }) => {
   // ################### ZUSTAND ###################
   const cartCount = useCartStore(selectCartItems)?.length;
-  console.log(cartCount);
+  console.log(cart);
   if (cartCount > 0) {
     return (
       <>
         <CartTitle />
+        <section className="section-padding">
+          <div className="container"></div>
+        </section>
       </>
     );
   } else {

@@ -12,7 +12,7 @@ const LoginButton = () => {
         size: "default",
         variant: "default",
       })} ms-2`}
-      href={paths.login}
+      href={`/${paths.login}`}
       prefetch={false}
     >
       Login

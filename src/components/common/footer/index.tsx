@@ -5,8 +5,16 @@ import SocialMedia from "../socialMedia";
 import BottomFooter from "./BottomFooter";
 import SectionTitle from "../sectionTitle";
 import ConnectionInfo from "./ConnectionInfo";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+import getDictionary from "@/utils/translation";
 
-const Footer = () => {
+const Footer = async () => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const {
+    footer: { company, account, download },
+  } = await getDictionary(locale);
+
   return (
     <footer className="section-padding">
       <div className="container flex flex-col gap-4 py-4 md:flex-row">
@@ -17,27 +25,35 @@ const Footer = () => {
         </section>
         <div className="grid w-full grid-cols-1 gap-6 md:w-2/3 md:gap-4 xs:grid-cols-3">
           <section>
-            <h2 className="mb-4 text-xl font-bold text-secondary">Company</h2>
+            <h2 className="mb-4 text-xl font-bold text-secondary">
+              {company.title}
+            </h2>
             <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">
-              <li className="border-secondary ps-2">About Us</li>
-              <li className="border-secondary ps-2">Services</li>
-              <li className="border-secondary ps-2">Case Studies</li>
-              <li className="border-secondary ps-2">Blog</li>
-              <li className="border-secondary ps-2">Contact</li>
+              <li className="border-secondary ps-2">{company.about}</li>
+              <li className="border-secondary ps-2">{company.services}</li>
+              <li className="border-secondary ps-2">{company.caseStudies}</li>
+              <li className="border-secondary ps-2">{company.blog}</li>
+              <li className="border-secondary ps-2">{company.contact}</li>
             </ul>
           </section>
           <section>
-            <h2 className="mb-4 text-xl font-bold text-secondary">Account</h2>
+            <h2 className="mb-4 text-xl font-bold text-secondary">
+              {account.title}
+            </h2>
             <ul className="flex flex-wrap items-center gap-1 divide-x px-1 ps-2 text-muted-foreground xs:flex-col xs:items-start xs:divide-x-0">
-              <li className="border-secondary ps-2">Sign In</li>
-              <li className="border-secondary ps-2">View Cart</li>
-              <li className="border-secondary ps-2">My Wishlist</li>
-              <li className="border-secondary ps-2">Track My Order</li>
-              <li className="border-secondary ps-2">Compare Products</li>
+              <li className="border-secondary ps-2">{account.signIn}</li>
+              <li className="border-secondary ps-2">{account.viewCart}</li>
+              <li className="border-secondary ps-2">{account.myWishlist}</li>
+              <li className="border-secondary ps-2">{account.trackMyOrder}</li>
+              <li className="border-secondary ps-2">
+                {account.compareProducts}
+              </li>
             </ul>
           </section>
           <section>
-            <h2 className="mb-4 text-xl font-bold text-secondary">Download</h2>
+            <h2 className="mb-4 text-xl font-bold text-secondary">
+              {download}
+            </h2>
             <Image
               width={646}
               height={250}

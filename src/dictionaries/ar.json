@@ -1,0 +1,49 @@
+{
+  "home": {
+    "hero": {
+      "title": "متجر اونلاين",
+      "titleHighlighted": "المنتجات مع التسليم",
+      "description": "تسوق مجموعة واسعة من المنتجات مع تسليم سريع. من التكنولوجيا إلى الموضة، ابحث عن كل ما تحتاجه في مكان واحد. استمتع بصفقات رائعة وتجربة تسوق سلسة معنا."
+    },
+    "category": {
+      "title": "تسوق بواسطة",
+      "titleHighlighted": "الفئة"
+    },
+    "features": {
+      "top": "قصتنا",
+      "topHighlighted": "بيع",
+      "trending": "رائج ",
+      "trendingHighlighted": "المنتجات "
+    }
+  },
+  "navbar": {
+    "home": "الرئيسية",
+    "about": "حول",
+    "shop": "تسوق",
+    "ourTeam": "فريقنا",
+    "contact": "اتصل",
+    "login": "تسجيل الدخول"
+  },
+  "footer": {
+    "company": {
+      "title": "الشركة",
+      "about": "معلومات عنا",
+      "services": "الخدمات",
+      "caseStudies": "دراسات الحالة",
+      "blog": "مدونة",
+      "contact": "اتصل"
+    },
+    "account": {
+      "title": "الحساب",
+      "signIn": "تسجيل الدخول",
+      "viewCart": "عرض العربة",
+      "myWishlist": "قائمة أمنياتي",
+      "trackMyOrder": "تتبع طلبي",
+      "compareProducts": "مقارنة المنتجات"
+    },
+    "download": "تنزيل"
+  },
+  "common": {
+    "add": "إضافة"
+  }
+}

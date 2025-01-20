@@ -1,10 +1,11 @@
 // My-Components
+
 import CartView from "./_components/CartView";
 
-const CartPage = () => {
+const CartPage = async () => {
   return (
     <>
-      <CartView />
+      <CartView cart={{ tet: "slman" }} />
     </>
   );
 };

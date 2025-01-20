@@ -1,19 +1,19 @@
 // =================== ROOTS ===================
 const ROOTS = {
   // ===== AUTH =====
-  LOGIN: "/login",
-  REGISTER: "/register",
+  LOGIN: "login",
+  REGISTER: "register",
 
   // ===== MAIN =====
-  HOME: "/",
-  ABOUT: "/about",
-  OUR_TEAM: "/our-team",
-  CONTACT: "/contact",
-  CART: "/cart",
-  PRODUCTS: "/products",
+  HOME: "",
+  ABOUT: "about",
+  OUR_TEAM: "our-team",
+  CONTACT: "contact",
+  CART: "cart",
+  PRODUCTS: "products",
 
   // ===== PROFILE =====
-  USER_PROFILE: "/user-profile",
+  USER_PROFILE: "user-profile",
 };
 
 // =================== PATHS ===================
@@ -46,5 +46,5 @@ export const paths = {
   },
 
   // ===== SHOP HASD =====
-  shop: "/#shop",
+  shop: "#shop",
 };

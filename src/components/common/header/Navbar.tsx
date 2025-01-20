@@ -1,7 +1,7 @@
 "use client";
 
 // Next
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 // My-Components
 import CustomLink from "../customLink";
 // My-Hooks
@@ -19,8 +19,13 @@ import {
 // Data
 import { paths } from "@/constants/paths";
 
-const Navbar = () => {
+const Navbar = ({
+  translations,
+}: {
+  translations: { [key: string]: string };
+}) => {
   // ################### NEXT HOOKS ###################
+  const { locale } = useParams();
   const pathName = usePathname();
 
   // ################### CUSTOM HOOKS ###################
@@ -30,31 +35,31 @@ const Navbar = () => {
   const links = [
     {
       id: 1,
-      title: "Home",
+      title: translations.home,
       icon: <House className="cursor-pointer min700:hidden" />,
       href: paths.home.root,
     },
     {
       id: 2,
-      title: "About",
+      title: translations.about,
       icon: <Pencil className="cursor-pointer min700:hidden" />,
       href: paths.about.root,
     },
     {
       id: 3,
-      title: "Shop",
+      title: translations.shop,
       icon: <Store className="cursor-pointer min700:hidden" />,
-      href: "/#shop",
+      href: paths.shop,
     },
     {
       id: 4,
-      title: "Our Team",
+      title: translations.ourTeam,
       icon: <Users className="cursor-pointer min700:hidden" />,
       href: paths.ourTeam.root,
     },
     {
       id: 5,
-      title: "Contact",
+      title: translations.contact,
       icon: <MessageCircle className="cursor-pointer min700:hidden" />,
       href: paths.contact.root,
     },
@@ -63,7 +68,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`${isOpen ? "" : "max700:hidden"} absolute inset-x-0 bottom-0 mx-auto w-11/12 rounded-2xl bg-background p-4 min700:static min700:h-full min700:w-auto min700:rounded-none min700:p-0`}
+        className={`${isOpen ? "" : "max700:hidden"} absolute inset-x-0 bottom-0 z-50 mx-auto w-11/12 rounded-2xl bg-background p-4 min700:static min700:h-full min700:w-auto min700:rounded-none min700:p-0`}
       >
         <ul
           className={
@@ -79,7 +84,7 @@ const Navbar = () => {
             >
               <CustomLink
                 className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
-                href={link.href}
+                href={`/${locale}/${link.href}`}
               >
                 {link.icon}
                 {link.title}
