@@ -10,7 +10,7 @@ import CustomLink from "../custom-link";
 import { ShoppingCart } from "lucide-react";
 // Data
 import { paths } from "@/constants/paths";
-import getCartQuanties from "@/utils/cart/getCartQuanties";
+import getCartQuanties from "@/utils/cart";
 import { Languages } from "@/constants/enums";
 
 const CartButton = () => {

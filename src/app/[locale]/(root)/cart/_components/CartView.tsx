@@ -6,6 +6,7 @@ import CartTitle from "./CartTitle";
 import EmptyCart from "./EmptyCart";
 import CartTable from "./CartTable";
 import Invoice from "./Invoice";
+import { getSubTotal, getTotal } from "@/utils/cart";
 
 const CartView = ({
   translations,
@@ -13,16 +14,20 @@ const CartView = ({
   translations: { [key: string]: string };
 }) => {
   // ################### ZUSTAND ###################
-  const cartCount = useCartStore(selectCartItems)?.length;
+  const cart = useCartStore(selectCartItems);
 
-  if (cartCount > 0) {
+  if (cart?.length > 0) {
     return (
       <>
         <CartTitle translations={translations} />
         <section>
           <div className="container flex flex-col items-center gap-8 lg:flex-row">
             <CartTable translations={translations} />
-            <Invoice translations={translations} />
+            <Invoice
+              translations={translations}
+              subTotal={getSubTotal(cart)}
+              total={getTotal(cart)}
+            />
           </div>
         </section>
       </>
