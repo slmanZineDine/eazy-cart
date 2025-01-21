@@ -5,19 +5,28 @@ import Products from "./Products";
 import Categories from "./Categories";
 import SectionTitle from "@/components/common/section-title";
 import SkeletonCard from "@/components/common/loading/SkeletonCard";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+import getDictionary from "@/utils/translation";
 
-const ShopByCategory = ({
+const ShopByCategory = async ({
   category,
   // page,
 }: {
   category: string;
   // page: number;
 }) => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { home } = await getDictionary(locale);
+
   return (
     <section id="shop" className="section-padding min700:scroll-m-headerHeight">
       <div className="container">
-        <SectionTitle title="Shop By" mainWord="Category" />
-        <Categories />
+        <SectionTitle
+          title={home.category.title}
+          mainWord={home.category.titleHighlighted}
+        />
+        <Categories translations={home.category} />
         <Suspense
           key={crypto.randomUUID()}
           fallback={

@@ -1,35 +1,37 @@
 "use client";
+
 import InputField from "@/components/common/custom-input";
 import { Button } from "@/components/ui/button";
 import { authAction } from "@/services/actions/authAction";
 import { User } from "lucide-react";
-import React, { useActionState } from "react";
+import { useActionState } from "react";
 
-const LoginForm = () => {
+const LoginForm = ({
+  translations,
+}: {
+  translations: { [key: string]: string };
+}) => {
   const [state, action, pending] = useActionState(authAction, undefined);
 
   return (
     <form action={action} noValidate>
       <InputField
-        label="Username"
+        label={translations.username}
         name="username"
         placeholder="Enter Slman"
         isRequired={false}
         icon={<User />}
         containerClassName="mb-4"
-        inputClassName=""
         defaultValue={state?.data.username ?? ""}
         error={state?.errors}
-        // dir="ltr"
       />
       <InputField
         type="password"
         name="password"
-        label="Password"
+        label={translations.password}
         placeholder="Enter 12345678"
         isRequired={false}
-        containerClassName=""
-        inputClassName=""
+        inputClassName="!pr-14 !pl-2"
         dir="ltr"
         defaultValue={state?.data.password ?? ""}
         error={state?.errors}
@@ -37,28 +39,17 @@ const LoginForm = () => {
       <button
         type="button"
         className="ms-auto block text-sm transition-colors duration-300 hover:text-primary"
-        // onClick={() => setShowForgetPasswordModel(true)}
       >
         هل نسيت كلمة المرور؟
       </button>
 
-      <p>{state?.errors?.responseErr ?? ""}</p>
+      <p className="mt-2 flex items-center gap-2 text-red-400">
+        {state?.errors?.responseErr ?? ""}
+      </p>
 
-      <Button disabled={pending} className="mt-8 w-full">
-        تسجيل الدخول
+      <Button disabled={pending} size="lg" className="mt-8 w-full text-lg">
+        Login
       </Button>
-      {/* 
-    <Button
-      color="primary"
-      className="mt-8"
-      type="submit"
-      disabled={isLoading}
-    >
-      {isLoading && (
-        <LoadingSpinner color="text-white" size="loading-sm" />
-      )}
-      تسجيل الدخول
-    </Button> */}
     </form>
   );
 };

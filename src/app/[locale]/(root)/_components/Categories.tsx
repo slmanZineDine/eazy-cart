@@ -13,38 +13,48 @@ import {
 import { Gem, Grid2x2, PersonStanding, Plug, Shirt } from "lucide-react";
 import Link from "next/link";
 
-const Categories = () => {
+const Categories = ({
+  translations,
+}: {
+  translations: { [key: string]: string };
+}) => {
+  // ################### NEXT ###################
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   // ################### DATA ###################
   const categories = [
     {
       id: 1,
       title: "All",
+      displayTitle: translations.all,
       icon: <Grid2x2 size={34} className="text-primary" />,
     },
     {
       id: 2,
       title: "Men's Clothing",
+      displayTitle: translations.menClothing,
       icon: <Shirt size={34} className="text-primary" />,
     },
     {
       id: 3,
       title: "Women's Clothing",
+      displayTitle: translations.womenClothing,
       icon: <PersonStanding size={34} className="text-primary" />,
     },
     {
       id: 4,
       title: "Jewelery",
+      displayTitle: translations.jewelery,
       icon: <Gem size={34} className="text-primary" />,
     },
     {
       id: 5,
       title: "Electronics",
+      displayTitle: translations.electronics,
       icon: <Plug size={34} className="text-primary" />,
     },
   ];
-
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const createPageURL = (category: string) => {
     const params = new URLSearchParams(searchParams);
@@ -76,7 +86,7 @@ const Categories = () => {
             >
               {category.icon}{" "}
               <h3 className="text-md font-bold text-secondary">
-                {category.title}
+                {category.displayTitle}
               </h3>
             </Link>
           </CarouselItem>

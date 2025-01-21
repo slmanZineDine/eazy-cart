@@ -49,7 +49,7 @@ const InputField = ({
     inputIcon = (
       <span
         onClick={toggleType}
-        className={`text-contentColor absolute end-4 top-1/2 -translate-y-1/2 cursor-pointer text-xl ${iconClassName}`}
+        className={`text-contentColor absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-xl ${iconClassName}`}
       >
         {inputType === "password" ? <EyeOff /> : <Eye />}
       </span>
@@ -81,7 +81,6 @@ const InputField = ({
           id={props.name}
           type={inputType}
           className={`${icon ? "pe-14 ps-2" : "px-2"} ${inputClassName}`}
-          //   className={`size-full rounded-xl ${icon ? "pe-14 ps-2" : "px-2"} ${inputClassName}`}
           autoComplete={type === "password" ? "off" : "on"}
           {...props}
         />
@@ -90,7 +89,6 @@ const InputField = ({
 
       {hasErr && (
         <small className="flex items-center gap-2 text-red-400">
-          {/* <CircleAlert /> {error[props.name as string].message} */}
           <CircleAlert size={16} /> {error[props.name as string]}
         </small>
       )}

@@ -7,7 +7,12 @@
     },
     "category": {
       "title": "Shop By",
-      "titleHighlighted": "Category"
+      "titleHighlighted": "Category",
+      "all": "All",
+      "menClothing": "Men's Clothing",
+      "womenClothing": "Women's Clothing",
+      "jewelery": "Jewelery",
+      "electronics": "Electronics"
     },
     "features": {
       "top": "Top",
@@ -102,9 +107,17 @@
     },
     "download": "Download"
   },
+  "errors": {
+    "username": "Username is required.",
+    "password": "Password is required.",
+    "loginErr": "Invalid username or password."
+  },
   "common": {
     "add": "Add",
     "readMore": "Read More",
+    "username": "Username",
+    "password": "Password",
+    "forgetPassword": "Forget Password?",
     "subTitle": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos temporibus blanditiis praesentium.",
     "paragraphOne": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, id necessitatibus ipsam suscipit quibusdam sint sit ratione adipisci et delectus eaque officia, animi temporibus iure magni, totam nostrum minus sunt?",
     "paragraphTwo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam fuga maiores in eos totam non, molestiae alias asperiores magni adipisci explicabo cupiditate est mollitia deserunt provident! Rerum reprehenderit in alias ducimus eum eaque laudantium quaerat commodi similique voluptatum ad temporibus, recusandae reiciendis corporis mollitia. Molestias hic sapiente quaerat distinctio atque!",

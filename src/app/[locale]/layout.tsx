@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cairo } from "next/font/google";
 import { ThemeProvider } from "@/provider/theme-provider";
 import "./globals.css";
 import { Directions, Languages } from "@/constants/enums";
 import { Locale } from "@/i18n.config";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cairo = Cairo({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  preload: true,
 });
 
 export async function generateStaticParams() {
@@ -39,9 +35,7 @@ export default async function RootLayout({
       dir={locale === Languages.ARABIC ? Directions.RTL : Directions.LTR}
       suppressHydrationWarning
     >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${cairo.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

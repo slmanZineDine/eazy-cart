@@ -4,12 +4,12 @@ import Image from "next/image";
 // Data
 import { paths } from "@/constants/paths";
 
-const Logo = () => {
+const Logo = ({ width, height }: { width: number; height: number }) => {
   return (
     <Link href={`/${paths.home.root}`} prefetch={false} className="shrink-0">
       <Image
-        width={100}
-        height={76}
+        width={width}
+        height={height}
         alt="Logo"
         src="/assets/images/icon.png"
         priority

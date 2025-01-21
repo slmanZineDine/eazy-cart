@@ -1,5 +1,6 @@
 "use server";
 
+import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
 import { cookies } from "next/headers";
@@ -12,6 +13,10 @@ const user = {
 
 export async function authAction(_: any, formData: FormData) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
+
+  const locale = await getCurrentLocale();
+  const { errors } = await getDictionary(locale);
+
   const data = {
     username: formData.get("username")?.toString() ?? "",
     password: formData.get("password")?.toString() ?? "",
@@ -19,14 +24,14 @@ export async function authAction(_: any, formData: FormData) {
 
   // Validation
   if (data.username.trim() === "") {
-    return { errors: { username: "Username is required." }, data };
+    return { errors: { username: errors.username }, data };
   } else if (data.password.trim() === "") {
-    return { errors: { password: "Password is required." }, data };
+    return { errors: { password: errors.password }, data };
   }
 
   if (data.username !== user.username || data.password !== user.password) {
     return {
-      errors: { responseErr: "Invalid username or password." },
+      errors: { responseErr: errors.loginErr },
       data,
     };
   }
@@ -37,8 +42,7 @@ export async function authAction(_: any, formData: FormData) {
     expires: new Date(Date.now() + 1000 * 60 * 60), // 1 Hour
   });
 
-  const Locale = await getCurrentLocale();
-  redirect(`/${Locale}/`);
+  redirect(`/${locale}/`);
 }
 
 export async function logout() {
