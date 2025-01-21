@@ -12,7 +12,7 @@ import SectionTitle from "@/components/common/section-title";
 const ContactForm = async () => {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
-  const { contact } = await getDictionary(locale);
+  const { contact, common } = await getDictionary(locale);
 
   return (
     <section className="section-padding">
@@ -22,7 +22,7 @@ const ContactForm = async () => {
           mainWord={contact.messageTitleHighlight}
           className="text-center"
           hasSubTitle={true}
-          subTitle={contact.subTitle}
+          subTitle={common.subTitle}
         />
         <form
           action=""

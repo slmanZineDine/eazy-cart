@@ -2,10 +2,16 @@
 // My-Components
 import SectionTitle from "@/components/common/section-title";
 import SocialMedia from "@/components/common/social-media";
+import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
 import Image from "next/image";
 
-const Employees = () => {
+const Employees = async () => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { ourTeam, common } = await getDictionary(locale);
+
   // ################### DATA ###################
   const employees = [
     {
@@ -50,10 +56,11 @@ const Employees = () => {
     <section className="section-padding">
       <div className="container">
         <SectionTitle
-          title="Our "
-          mainWord="Team"
+          title={ourTeam.ourTeamTitle}
+          mainWord={ourTeam.ourTeamHighlight}
           className="text-center"
           hasSubTitle={true}
+          subTitle={common.subTitle}
         />
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {employees.map((employee) => (

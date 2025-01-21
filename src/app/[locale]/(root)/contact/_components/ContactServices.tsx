@@ -7,7 +7,7 @@ import SectionTitle from "@/components/common/section-title";
 const ContactServices = async () => {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
-  const { contact } = await getDictionary(locale);
+  const { contact, common } = await getDictionary(locale);
 
   // ################### DATA ###################
   const services = [
@@ -34,7 +34,7 @@ const ContactServices = async () => {
                 <h3>{service.title}</h3>
               </div>
               <p className="indent-4 text-muted-foreground">
-                {contact.services.description}
+                {common.boxDescription}
               </p>
             </div>
           ))}

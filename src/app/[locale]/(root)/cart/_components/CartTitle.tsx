@@ -5,7 +5,11 @@ import { selectCartItems, useCartStore } from "@/zustand/cartStore";
 // My-Components
 import SectionTitle from "@/components/common/section-title";
 
-const CartTitle = () => {
+const CartTitle = ({
+  translations,
+}: {
+  translations: { [key: string]: string };
+}) => {
   // ################### ZUSTAND ###################
   const cartCount = useCartStore(selectCartItems)?.length;
 
@@ -13,14 +17,15 @@ const CartTitle = () => {
     <section className="section-padding">
       <div className="container">
         <SectionTitle
-          title="Shopping"
-          mainWord="Cart"
-          //   className="!mb-10 text-center"
+          title={translations.cartTitle}
+          mainWord={translations.cartTitleHighlight}
         />
         <p className="text-muted-foreground">
-          There are{" "}
-          <span className="font-bold text-primary">{cartCount} products</span>{" "}
-          in your cart
+          {translations.cartCountStart}&nbsp;
+          <span className="font-bold text-primary">
+            {cartCount} {translations.products}
+          </span>{" "}
+          {translations.cartCountEnd}
         </p>
       </div>
     </section>

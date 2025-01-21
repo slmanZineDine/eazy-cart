@@ -3,7 +3,11 @@ import TableRowList from "@/components/common/custom-list/CustomList";
 import { useCartStore, selectCartItems } from "@/zustand/cartStore";
 import CartRow from "./CartRow";
 
-const CartTable = () => {
+const CartTable = ({
+  translations,
+}: {
+  translations: { [key: string]: string };
+}) => {
   // ################### ZUSTAND ###################
   const cart = useCartStore(selectCartItems);
 
@@ -11,13 +15,13 @@ const CartTable = () => {
   const tableHeader: TTableHeader[] = [
     {
       id: 1,
-      title: "Product",
+      title: translations.product,
       isShow: true,
       styling: { textAlign: "start", paddingBlockStart: ".5rem" },
     },
-    { id: 2, title: "Price", isShow: true },
-    { id: 3, title: "Quantity", isShow: true },
-    { id: 4, title: "Total", isShow: true },
+    { id: 2, title: translations.price, isShow: true },
+    { id: 3, title: translations.quantity, isShow: true },
+    { id: 4, title: translations.total, isShow: true },
     { id: 5, title: "", isShow: true },
   ];
 

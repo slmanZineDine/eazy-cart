@@ -1,32 +1,40 @@
 import AnimatedCounter from "@/components/common/counter/AnimatedCounter";
+import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
-const Statistics = () => {
+const Statistics = async () => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const {
+    about: { statistics },
+  } = await getDictionary(locale);
+
   // ################### DATA ###################
   const data = [
     {
       id: 1,
-      title: "Glorious years",
+      title: statistics.gloriousYear,
       hasDecimal: false,
       amount: 10,
       suffix: "Y",
     },
     {
       id: 2,
-      title: "Happy clients",
+      title: statistics.happyClients,
       hasDecimal: true,
       amount: 30_000,
       suffix: "C",
     },
     {
       id: 3,
-      title: "Projects complete",
-      hasDecimal: true,
+      title: statistics.projectsComplete,
+      hasDecimal: false,
       amount: 12,
       suffix: "P",
     },
     {
       id: 4,
-      title: "Products Sale",
+      title: statistics.productsSale,
       hasDecimal: true,
       amount: 100_000,
       suffix: "P",
@@ -35,7 +43,7 @@ const Statistics = () => {
 
   return (
     <section className="section-padding">
-      <div className="bg-cardLighter container grid grid-cols-1 gap-4 p-6 sm:grid-cols-2 md:grid-cols-4">
+      <div className="container grid grid-cols-1 gap-4 bg-cardLighter p-6 sm:grid-cols-2 md:grid-cols-4">
         {data.map((item) => (
           <div
             key={item.id}

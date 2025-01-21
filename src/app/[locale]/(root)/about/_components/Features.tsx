@@ -18,25 +18,40 @@ import {
   ThumbsUp,
   Truck,
 } from "lucide-react";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+import getDictionary from "@/utils/translation";
 
-const Features = () => {
+const Features = async () => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { about, common } = await getDictionary(locale);
+
   // ################### DATA ###################
   const features = [
-    { id: 1, title: "Best Prices & Offers", icon: <Gift size={32} /> },
-    { id: 2, title: "Wide Assortment", icon: <PackageOpen size={32} /> },
-    { id: 3, title: "Free Delivery", icon: <Truck size={32} /> },
-    { id: 4, title: "Easy Returns", icon: <HandCoins size={32} /> },
-    { id: 5, title: "100% Satisfaction", icon: <Smile size={32} /> },
-    { id: 6, title: "Great Daily Deal", icon: <ThumbsUp size={32} /> },
+    { id: 1, title: about.features.bestPricesOffers, icon: <Gift size={32} /> },
+    {
+      id: 2,
+      title: about.features.wideAssortment,
+      icon: <PackageOpen size={32} />,
+    },
+    { id: 3, title: about.features.freeDelivery, icon: <Truck size={32} /> },
+    { id: 4, title: about.features.easyReturns, icon: <HandCoins size={32} /> },
+    { id: 5, title: about.features.satisfaction, icon: <Smile size={32} /> },
+    {
+      id: 6,
+      title: about.features.greatDailyDeal,
+      icon: <ThumbsUp size={32} />,
+    },
   ];
   return (
     <section className="section-padding">
       <div className="container">
         <SectionTitle
-          title="What We"
-          mainWord="Provide?"
+          title={about.featureTitle}
+          mainWord={about.featureHighlight}
           className="text-center"
           hasSubTitle={true}
+          subTitle={common.subTitle}
         />
         <div className="mt-16 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
@@ -53,14 +68,11 @@ const Features = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-center text-md">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Deleniti porro consequatur amet nulla maxime.
-                </p>
+                <p className="text-center text-md">{common.boxDescription}</p>
               </CardContent>
               <CardFooter>
                 <Button className="mx-auto bg-[#d4eee2] text-primary hover:bg-[#d4eee2]/90">
-                  Read More
+                  {common.readMore}
                 </Button>
               </CardFooter>
             </Card>

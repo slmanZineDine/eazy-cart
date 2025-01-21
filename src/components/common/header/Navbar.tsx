@@ -18,18 +18,21 @@ import {
 } from "lucide-react";
 // Data
 import { paths } from "@/constants/paths";
+import { ReactNode } from "react";
 
 const Navbar = ({
   translations,
+  children,
 }: {
   translations: { [key: string]: string };
+  children: ReactNode;
 }) => {
   // ################### NEXT HOOKS ###################
   const { locale } = useParams();
   const pathName = usePathname();
 
   // ################### CUSTOM HOOKS ###################
-  const [isOpen, setIsOpen, navbarRef] = useOutsideClick<HTMLUListElement>();
+  const [isOpen, setIsOpen, navbarRef] = useOutsideClick<HTMLDivElement>();
 
   // ################### DATA ###################
   const links = [
@@ -69,13 +72,9 @@ const Navbar = ({
     <>
       <div
         className={`${isOpen ? "" : "max700:hidden"} absolute inset-x-0 bottom-0 z-50 mx-auto w-11/12 rounded-2xl bg-background p-4 min700:static min700:h-full min700:w-auto min700:rounded-none min700:p-0`}
+        ref={navbarRef}
       >
-        <ul
-          className={
-            "min700:flex-between grid grid-cols-3 items-center justify-center rounded-2xl min700:h-full"
-          }
-          ref={navbarRef}
-        >
+        <ul className="min700:flex-between grid grid-cols-3 items-center justify-center rounded-2xl min700:h-full">
           {links.map((link) => (
             <li
               key={link.id}
@@ -92,6 +91,7 @@ const Navbar = ({
             </li>
           ))}
         </ul>
+        {children}
         <X
           className="ms-auto cursor-pointer text-muted-foreground transition-colors hover:text-secondary min700:hidden"
           size={30}

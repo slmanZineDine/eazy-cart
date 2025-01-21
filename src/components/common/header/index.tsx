@@ -17,12 +17,16 @@ const Header = async () => {
     <header className="fixed inset-x-0 bottom-4 z-40 w-full rounded-full bg-background drop-shadow-md transition-[bottom] duration-500 min700:bottom-[calc(100%-var(--header-height))] min700:rounded-none">
       <nav className="flex-between container relative h-headerHeight">
         <Logo />
-        <Navbar translations={navbar} />
+        <Navbar translations={navbar}>
+          <div className="flex-center my-4">
+            <LoginButton className="h-10 rounded-md px-8 min700:hidden" />
+          </div>
+        </Navbar>
         <div className="flex-between gap-2">
           <ThemeSwitcher />
           <LanguageSwitcher />
           <CartButton />
-          <LoginButton />
+          <LoginButton className="ms-2 hidden min700:block" />
         </div>
       </nav>
     </header>

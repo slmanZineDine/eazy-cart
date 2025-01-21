@@ -2,6 +2,7 @@
 import Product from "@/components/common/product";
 // API
 import { getAllProducts, getProductsByCategroy } from "@/services/products";
+import { TProduct } from "@/types/product";
 
 const Products = async ({
   category,
@@ -13,7 +14,7 @@ const Products = async ({
   // ################### FETCH DATA ###################
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  let products = [];
+  let products: TProduct[] = [];
   if (category && category !== "All")
     products = await getProductsByCategroy({ category });
   else products = await getAllProducts({ limit: 4 });

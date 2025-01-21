@@ -7,18 +7,22 @@ import EmptyCart from "./EmptyCart";
 import CartTable from "./CartTable";
 import Invoice from "./Invoice";
 
-const CartView = ({ cart }: { cart: { [key: string]: string } }) => {
+const CartView = ({
+  translations,
+}: {
+  translations: { [key: string]: string };
+}) => {
   // ################### ZUSTAND ###################
   const cartCount = useCartStore(selectCartItems)?.length;
-  console.log(cart);
+
   if (cartCount > 0) {
     return (
       <>
-        <CartTitle />
+        <CartTitle translations={translations} />
         <section>
           <div className="container flex flex-col items-center gap-8 lg:flex-row">
-            <CartTable />
-            <Invoice />
+            <CartTable translations={translations} />
+            <Invoice translations={translations} />
           </div>
         </section>
       </>

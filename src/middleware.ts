@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { match as matchLocale } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { i18n } from "./i18n.config";
+import { cookies } from "next/headers";
 
 function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
@@ -42,6 +43,12 @@ export async function middleware(request: NextRequest) {
   const locale = parsedUrl.pathname.split("/")[1];
   requestHeaders.set("x-locale", locale);
 
+  const isLogged = (await cookies()).has("theToken");
+
+  if (isLogged && pathname === `/${locale}/login`) {
+    return NextResponse.redirect(new URL(`/${locale}/`, request.url));
+  }
+
   return NextResponse.next({
     request: {
       headers: requestHeaders,
@@ -51,6 +58,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|assets).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|icon.png|robots.txt|sitemap.xml|assets).*)",
   ],
 };

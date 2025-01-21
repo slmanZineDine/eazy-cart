@@ -17,7 +17,7 @@ const AnimatedCounter = ({
       <CountUp
         duration={4}
         decimals={hasDecimal ? 2 : undefined}
-        decimal={hasDecimal ? "," : undefined}
+        decimal={hasDecimal ? "." : undefined}
         suffix={suffix}
         end={amount}
         enableScrollSpy={true}
