@@ -3,13 +3,19 @@
 import { Button } from "@/components/ui/button";
 import { logout } from "@/services/actions/authAction";
 
-const LogoutButton = ({ className = "" }: { className?: string }) => {
+const LogoutButton = ({
+  translations,
+  className = "",
+}: {
+  translations: { [key: string]: string };
+  className?: string;
+}) => {
   return (
     <Button
-      className={`bg-red-500 hover:bg-red-500/75 ${className}`}
+      className={`w-full bg-red-500 hover:bg-red-500/85 ${className}`}
       onClick={logout}
     >
-      Logout
+      {translations.logout}
     </Button>
   );
 };

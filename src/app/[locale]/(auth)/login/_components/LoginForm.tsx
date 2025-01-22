@@ -18,7 +18,7 @@ const LoginForm = ({
       <InputField
         label={translations.username}
         name="username"
-        placeholder="Enter Slman"
+        placeholder="Enter slman"
         isRequired={false}
         icon={<User />}
         containerClassName="mb-4"
@@ -48,7 +48,7 @@ const LoginForm = ({
       </p>
 
       <Button disabled={pending} size="lg" className="mt-8 w-full text-lg">
-        Login
+        {translations.login}
       </Button>
     </form>
   );

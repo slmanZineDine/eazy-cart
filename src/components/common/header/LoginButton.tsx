@@ -7,7 +7,6 @@ import { paths } from "@/constants/paths";
 import { isUserlogged } from "@/utils/auth/isUserlogged";
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
-import LogoutButton from "./LogoutButton";
 
 const LoginButton = async ({ className = "" }: { className?: string }) => {
   // ################### i18n ###################
@@ -18,7 +17,7 @@ const LoginButton = async ({ className = "" }: { className?: string }) => {
   const isLogged = await isUserlogged();
 
   if (isLogged) {
-    return <LogoutButton className={className} />;
+    return <></>;
   } else {
     return (
       <CustomLink

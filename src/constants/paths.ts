@@ -13,7 +13,7 @@ const ROOTS = {
   PRODUCTS: "products",
 
   // ===== PROFILE =====
-  USER_PROFILE: "user-profile",
+  PROFILE: "profile",
 };
 
 // =================== PATHS ===================
@@ -41,8 +41,8 @@ export const paths = {
   products: { root: ROOTS.PRODUCTS },
 
   // ===== PROFILE =====
-  userProfile: {
-    root: ROOTS.USER_PROFILE,
+  profile: {
+    root: ROOTS.PROFILE,
   },
 
   // ===== SHOP HASD =====

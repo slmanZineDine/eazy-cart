@@ -33,8 +33,8 @@ const LanguageSwitcher = () => {
       <DropdownMenuContent align="end">
         {Object.entries(APP_LANGUAGES).map(([key, value], i) => (
           <DropdownMenuItem
-            className="cursor-pointer"
             key={i}
+            className="cursor-pointer hover:!bg-muted"
             onClick={() => switchLanguage(value)}
           >
             {key}

@@ -1,5 +1,6 @@
 "use server";
 
+import { paths } from "@/constants/paths";
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
@@ -12,7 +13,7 @@ const user = {
 };
 
 export async function authAction(_: any, formData: FormData) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const locale = await getCurrentLocale();
   const { errors } = await getDictionary(locale);
@@ -42,9 +43,10 @@ export async function authAction(_: any, formData: FormData) {
     expires: new Date(Date.now() + 1000 * 60 * 60), // 1 Hour
   });
 
-  redirect(`/${locale}/`);
+  redirect(`/${locale}/${paths.home.root}`);
 }
 
 export async function logout() {
   (await cookies()).delete("theToken");
+  redirect(`/${paths.home.root}`);
 }

@@ -7,11 +7,16 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 import getDictionary from "@/utils/translation";
+import AvatarMenu from "./AvatarMenu";
+import { isUserlogged } from "@/utils/auth/isUserlogged";
 
 const Header = async () => {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
   const { navbar } = await getDictionary(locale);
+
+  // ################### UTILS ###################
+  const isLogged = await isUserlogged();
 
   return (
     <header className="fixed inset-x-0 bottom-4 z-40 w-full rounded-full bg-background drop-shadow-md transition-[bottom] duration-500 min700:bottom-[calc(100%-var(--header-height))] min700:rounded-none">
@@ -26,6 +31,7 @@ const Header = async () => {
           <ThemeSwitcher />
           <LanguageSwitcher />
           <CartButton />
+          {isLogged && <AvatarMenu />}
           <LoginButton className="ms-2 hidden min700:block" />
         </div>
       </nav>
