@@ -13,6 +13,7 @@ export enum Environments {
   DEV = "development",
 }
 export enum UserRole {
-  USER = "USER",
-  QUEST = "QUEST",
+  USER = "user",
+  QUEST = "quest",
+  ADMIN = "admin",
 }

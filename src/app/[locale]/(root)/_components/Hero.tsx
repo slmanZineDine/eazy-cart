@@ -13,7 +13,7 @@ const Hero = async () => {
     <section className="flex-center section-padding min-h-mainHeight bg-heroGradient min90rem:min-h-fit min90rem:py-16">
       <div className="flex-between container flex-col gap-8 md:flex-row">
         <div className="md:w-1/2">
-          <h2 className="text-3xl font-bold leading-snug text-primary md:text-4xl lg:text-6xl">
+          <h2 className="text-3xl font-bold text-primary md:text-4xl lg:text-6xl">
             <span className="text-secondary">{hero.title}</span>{" "}
             {hero.titleHighlighted}
           </h2>

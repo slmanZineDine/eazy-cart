@@ -79,13 +79,21 @@
     "estimatedTax": "الضريبة المقدرة",
     "total": "الإجمالي"
   },
+  "dashboard": {
+    "users": "المستخدمين",
+    "name": "الأسم",
+    "username": "اسم المستخدم",
+    "phone": "رقم الهاتف",
+    "city": "المدينة"
+  },
   "navbar": {
     "home": "الرئيسية",
     "about": "حول",
     "shop": "تسوق",
     "ourTeam": "فريقنا",
     "contact": "اتصل",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "dashboard": "لوحة التحكم"
   },
   "footer": {
     "company": {

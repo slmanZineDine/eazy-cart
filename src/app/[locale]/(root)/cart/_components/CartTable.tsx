@@ -1,7 +1,8 @@
 import Table from "@/components/common/table";
-import TableRowList from "@/components/common/custom-list/CustomList";
+
 import { useCartStore, selectCartItems } from "@/zustand/cartStore";
 import CartRow from "./CartRow";
+import CustomList from "@/components/common/custom-list";
 
 const CartTable = ({
   translations,
@@ -31,9 +32,8 @@ const CartTable = ({
         tableHeader={tableHeader}
         thClassName="p-4"
         tableClassName="min-w-[600px] w-full text-center"
-        coverClassName=""
       >
-        <TableRowList
+        <CustomList
           records={cart}
           renderItem={(record) => <CartRow {...record} />}
         />

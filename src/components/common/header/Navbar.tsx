@@ -9,6 +9,7 @@ import useOutsideClick from "@/hooks/common/useOutsideClick";
 // Icons
 import {
   House,
+  LayoutDashboard,
   Menu,
   MessageCircle,
   Pencil,
@@ -19,12 +20,15 @@ import {
 // Data
 import { paths } from "@/constants/paths";
 import { ReactNode } from "react";
+import { UserRole } from "@/constants/enums";
 
 const Navbar = ({
   translations,
+  role,
   children,
 }: {
   translations: { [key: string]: string };
+  role?: string;
   children: ReactNode;
 }) => {
   // ################### NEXT HOOKS ###################
@@ -41,30 +45,42 @@ const Navbar = ({
       title: translations.home,
       icon: <House className="cursor-pointer min700:hidden" />,
       href: paths.home.root,
+      isShow: true,
     },
     {
       id: 2,
       title: translations.about,
       icon: <Pencil className="cursor-pointer min700:hidden" />,
       href: paths.about.root,
+      isShow: true,
     },
     {
       id: 3,
-      title: translations.shop,
-      icon: <Store className="cursor-pointer min700:hidden" />,
-      href: paths.shop,
+      title: translations.dashboard,
+      icon: <LayoutDashboard className="cursor-pointer min700:hidden" />,
+      href: paths.dashboard.root,
+      isShow: role === UserRole.ADMIN,
     },
     {
       id: 4,
-      title: translations.ourTeam,
-      icon: <Users className="cursor-pointer min700:hidden" />,
-      href: paths.ourTeam.root,
+      title: translations.shop,
+      icon: <Store className="cursor-pointer min700:hidden" />,
+      href: paths.shop,
+      isShow: role !== UserRole.ADMIN,
     },
     {
       id: 5,
+      title: translations.ourTeam,
+      icon: <Users className="cursor-pointer min700:hidden" />,
+      href: paths.ourTeam.root,
+      isShow: true,
+    },
+    {
+      id: 6,
       title: translations.contact,
       icon: <MessageCircle className="cursor-pointer min700:hidden" />,
       href: paths.contact.root,
+      isShow: true,
     },
   ];
 
@@ -75,21 +91,24 @@ const Navbar = ({
         ref={navbarRef}
       >
         <ul className="min700:flex-between grid grid-cols-3 items-center justify-center rounded-2xl min700:h-full">
-          {links.map((link) => (
-            <li
-              key={link.id}
-              className="min700:h-full"
-              onClick={() => setIsOpen(false)}
-            >
-              <CustomLink
-                className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
-                href={`/${locale}/${link.href}`}
-              >
-                {link.icon}
-                {link.title}
-              </CustomLink>
-            </li>
-          ))}
+          {links.map(
+            (link) =>
+              link.isShow && (
+                <li
+                  key={link.id}
+                  className="min700:h-full"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <CustomLink
+                    className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
+                    href={`/${locale}/${link.href}`}
+                  >
+                    {link.icon}
+                    {link.title}
+                  </CustomLink>
+                </li>
+              ),
+          )}
         </ul>
         {children}
         <X

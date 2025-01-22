@@ -6,6 +6,8 @@ import Negotiator from "negotiator";
 import { i18n } from "./i18n.config";
 import { cookies } from "next/headers";
 import { paths } from "./constants/paths";
+import { getUserRole } from "./utils/auth";
+import { UserRole } from "./constants/enums";
 
 function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
@@ -45,11 +47,19 @@ export async function middleware(request: NextRequest) {
   requestHeaders.set("x-locale", locale);
 
   const isLogged = (await cookies()).has("theToken");
+  const role = await getUserRole();
 
   if (isLogged && pathname === `/${locale}/${paths.login}`) {
     return NextResponse.redirect(new URL(`/${locale}/`, request.url));
   }
   if (!isLogged && pathname === `/${locale}/${paths.profile.root}`) {
+    return NextResponse.redirect(new URL(`/${locale}/`, request.url));
+  }
+  if (
+    isLogged &&
+    pathname === `/${locale}/${paths.dashboard.root}` &&
+    role !== UserRole.ADMIN
+  ) {
     return NextResponse.redirect(new URL(`/${locale}/`, request.url));
   }
 

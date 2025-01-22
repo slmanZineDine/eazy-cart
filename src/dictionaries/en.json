@@ -80,13 +80,21 @@
     "estimatedTax": "Estimated Tax",
     "total": "Total"
   },
+  "dashboard": {
+    "users": "Users",
+    "name": "Name",
+    "username": "Username",
+    "phone": "Phone",
+    "city": "City"
+  },
   "navbar": {
     "home": "Home",
     "about": "About",
     "shop": "Shop",
     "ourTeam": "Our Team",
     "contact": "Contact",
-    "login": "Login"
+    "login": "Login",
+    "dashboard": "Dashboard"
   },
   "footer": {
     "company": {

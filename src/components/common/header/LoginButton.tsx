@@ -4,7 +4,7 @@ import CustomLink from "../custom-link";
 import { buttonVariants } from "@/components/ui/button";
 // Data
 import { paths } from "@/constants/paths";
-import { isUserlogged } from "@/utils/auth/isUserlogged";
+import { isUserlogged } from "@/utils/auth";
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 

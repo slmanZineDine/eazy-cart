@@ -18,7 +18,7 @@ const LoginForm = ({
       <InputField
         label={translations.username}
         name="username"
-        placeholder="Enter slman"
+        placeholder="Enter slman or admin"
         isRequired={false}
         icon={<User />}
         containerClassName="mb-4"

@@ -5,6 +5,9 @@ export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "";
 const ROOTS = {
   // =================== Products ===================
   PRODUCTS: `products`,
+
+  // =================== Users ===================
+  USERS: `users`,
 };
 
 // =================== ENDPOINTS ===================
@@ -13,5 +16,10 @@ export const endpoints = {
   products: {
     root: ROOTS.PRODUCTS,
     byCategory: `${ROOTS.PRODUCTS}/category`,
+  },
+
+  // =================== Users ===================
+  users: {
+    root: ROOTS.USERS,
   },
 };

@@ -14,6 +14,9 @@ const ROOTS = {
 
   // ===== PROFILE =====
   PROFILE: "profile",
+
+  // ===== DASHBOURD =====
+  DASHBOURD: "dashboard",
 };
 
 // =================== PATHS ===================
@@ -43,6 +46,11 @@ export const paths = {
   // ===== PROFILE =====
   profile: {
     root: ROOTS.PROFILE,
+  },
+
+  // ===== DASHBOURD =====
+  dashboard: {
+    root: ROOTS.DASHBOURD,
   },
 
   // ===== SHOP HASD =====
