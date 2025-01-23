@@ -17,12 +17,18 @@ import { CURRENCY } from "@/constants";
 import type { TProduct } from "@/types/product";
 import CustomLink from "../custom-link";
 import { paths } from "@/constants/paths";
+import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
 type TProdcutProps = {
   product: TProduct;
 };
 
-const Product = ({ product }: TProdcutProps) => {
+const Product = async ({ product }: TProdcutProps) => {
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { common } = await getDictionary(locale);
+
   return (
     <Card className="flex flex-col">
       <CardHeader>
@@ -56,7 +62,7 @@ const Product = ({ product }: TProdcutProps) => {
           {CURRENCY}
           {product.price}
         </span>
-        <AddToCartBtn product={product} />
+        <AddToCartBtn locale={locale} translations={common} product={product} />
       </CardFooter>
     </Card>
   );

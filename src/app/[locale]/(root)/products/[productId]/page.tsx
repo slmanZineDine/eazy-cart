@@ -8,6 +8,8 @@ import AddToCartBtn from "@/components/common/product/AddToCartBtn";
 import { getProduct } from "@/services/products";
 // Data
 import { CURRENCY } from "@/constants";
+import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 
 const ProductPage = async ({
   params,
@@ -16,6 +18,10 @@ const ProductPage = async ({
 }) => {
   // ################### NEXT ###################
   const productId = (await params).productId;
+
+  // ################### i18n ###################
+  const locale = await getCurrentLocale();
+  const { common } = await getDictionary(locale);
 
   // ################### FETCH DATA ###################
   const product = await getProduct({ id: productId });
@@ -47,7 +53,12 @@ const ProductPage = async ({
               {product.description}
             </p>
           </div>
-          <AddToCartBtn product={product} className="w-full" />
+          <AddToCartBtn
+            locale={locale}
+            translations={common}
+            product={product}
+            className="w-full"
+          />
 
           <div className="my-4 flex items-center gap-2 border-y border-muted-foreground py-4">
             <h4 className="text-lg">Share: </h4>

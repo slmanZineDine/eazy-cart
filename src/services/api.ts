@@ -22,5 +22,4 @@ export const fetchData = async <T>(
   }
 
   return response.json();
-  //   return response.json() as Promise<T>;
 };

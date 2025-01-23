@@ -14,13 +14,21 @@ import {
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 // Types
 import type { TProduct } from "@/types/product";
+import { Languages } from "@/constants/enums";
 
 type TAddToCartBtnProps = {
   product: TProduct;
   className?: string;
+  translations: { [key: string]: string };
+  locale: string;
 };
 
-const AddToCartBtn = ({ product, className = "" }: TAddToCartBtnProps) => {
+const AddToCartBtn = ({
+  product,
+  locale,
+  translations,
+  className = "",
+}: TAddToCartBtnProps) => {
   // ################### ZUSTAND ###################
   const addToCart = useCartStore(addToCartAction);
   const removeProduct = useCartStore(removeProductAction);
@@ -87,8 +95,10 @@ const AddToCartBtn = ({ product, className = "" }: TAddToCartBtnProps) => {
         className={`group overflow-hidden bg-[#d4eee2] text-primary hover:bg-[#d4eee2] ${className}`}
         onClick={handleAddToCart}
       >
-        <ShoppingCart className="-translate-x-10 transition-transform duration-300 group-hover:translate-x-0" />{" "}
-        Add
+        <ShoppingCart
+          className={`${locale === Languages.ARABIC ? "translate-x-10 -scale-x-100" : "-translate-x-10"} transition-transform duration-300 group-hover:translate-x-0`}
+        />
+        {translations.add}
       </Button>
     );
   }

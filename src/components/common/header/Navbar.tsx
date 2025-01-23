@@ -1,25 +1,25 @@
 "use client";
 
 // Next
+import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-// My-Components
-import CustomLink from "../custom-link";
+// React
+import { ReactNode } from "react";
 // My-Hooks
 import useOutsideClick from "@/hooks/common/useOutsideClick";
 // Icons
 import {
-  House,
-  LayoutDashboard,
-  Menu,
-  MessageCircle,
-  Pencil,
-  Store,
-  Users,
   X,
+  Menu,
+  Store,
+  House,
+  Users,
+  Pencil,
+  MessageCircle,
+  LayoutDashboard,
 } from "lucide-react";
 // Data
 import { paths } from "@/constants/paths";
-import { ReactNode } from "react";
 import { UserRole } from "@/constants/enums";
 
 const Navbar = ({
@@ -99,13 +99,13 @@ const Navbar = ({
                   className="min700:h-full"
                   onClick={() => setIsOpen(false)}
                 >
-                  <CustomLink
+                  <Link
                     className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
                     href={`/${locale}/${link.href}`}
                   >
                     {link.icon}
                     {link.title}
-                  </CustomLink>
+                  </Link>
                 </li>
               ),
           )}

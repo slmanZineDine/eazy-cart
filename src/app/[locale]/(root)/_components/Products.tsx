@@ -15,6 +15,7 @@ const Products = async ({
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
   let products: TProduct[] = [];
+
   if (category && category !== "All")
     products = await getProductsByCategroy({ category });
   else products = await getAllProducts({ limit: 4 });

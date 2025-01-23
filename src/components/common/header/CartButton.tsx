@@ -32,7 +32,7 @@ const CartButton = () => {
           </span>
         )}
         <ShoppingCart
-          className={`icon ${locale === Languages.ARABIC ? "-scale-x-100" : ""} `}
+          className={`icon ${locale === Languages.ARABIC ? "-scale-x-100" : ""}`}
         />
       </CustomLink>
     </div>
