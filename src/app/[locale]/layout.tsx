@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 // My-Components
 import { ThemeProvider } from "@/provider/theme-provider";
 // Utils
@@ -53,6 +54,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={`${cairo.className} antialiased`}>
+        <NextTopLoader color="#26c97d" />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
