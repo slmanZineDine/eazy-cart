@@ -1,8 +1,26 @@
+// Next
+import { Metadata } from "next";
+// My-Components
 import LoginForm from "./_components/LoginForm";
-import DeliverySvg from "@/components/common/svg-components/DeliverySvg";
 import Logo from "@/components/common/header/Logo";
+import DeliverySvg from "@/components/common/svg-components/DeliverySvg";
+// Utils
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+// Data
+import { Locale } from "@/i18n.config";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const locale = (await params).locale;
+
+  const { navbar } = await getDictionary(locale);
+
+  return { title: { absolute: navbar.login } };
+}
 
 const LoginPage = async () => {
   // ################### i18n ###################

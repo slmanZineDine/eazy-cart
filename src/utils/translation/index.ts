@@ -1,19 +1,13 @@
 import "server-only";
 
-import { Locale } from "@/i18n.config";
-// import { Languages } from "@/constants/enums";
+import { i18n, Locale } from "@/i18n.config";
 
 const dictionaries = {
   ar: () => import("@/dictionaries/ar.json").then((module) => module.default),
   en: () => import("@/dictionaries/en.json").then((module) => module.default),
 };
 
-// const getTrans = async (locale: Locale) => {
-//    return locale === Languages.ARABIC ? dictionaries.ar() : dictionaries.en();
-// };
-
-// export default getTrans;
-
-export const getDictionary = async (locale: Locale) => dictionaries[locale]();
+export const getDictionary = async (locale: Locale) =>
+  locale ? dictionaries[locale]() : dictionaries[i18n.defaultLocale]();
 
 export default getDictionary;

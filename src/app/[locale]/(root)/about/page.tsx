@@ -5,6 +5,20 @@ import TextImage from "@/components/common/text-image";
 import SectionTitle from "@/components/common/section-title";
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+import { Metadata } from "next";
+import { Locale } from "@/i18n.config";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const locale = (await params).locale;
+
+  const { navbar } = await getDictionary(locale);
+
+  return { title: navbar.about };
+}
 
 const AboutPage = async () => {
   // ################### i18n ###################
