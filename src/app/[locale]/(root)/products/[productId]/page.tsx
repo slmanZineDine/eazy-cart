@@ -1,16 +1,27 @@
 // Next
 import Image from "next/image";
+import { Metadata } from "next";
 // My-Components
 import SocialMedia from "@/components/common/social-media";
 import StarsRating from "@/components/common/rating/StarsRating";
 import AddToCartBtn from "@/components/common/product/AddToCartBtn";
 // API
-import { getProduct } from "@/services/products";
-// Data
-import { CURRENCY } from "@/constants";
+import { getAllProducts, getProduct } from "@/services/products";
+// Utils
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
-import { Metadata } from "next";
+// Data
+import { CURRENCY } from "@/constants";
+
+export async function generateStaticParams() {
+  const products = await getAllProducts();
+
+  return products
+    .map(({ id }) => ({
+      productId: `${id}`,
+    }))
+    .slice(0, 20);
+}
 
 export async function generateMetadata({
   params,
