@@ -19,15 +19,6 @@ export async function generateStaticParams() {
   return [{ locale: Languages.ARABIC }, { locale: Languages.ENGLISH }];
 }
 
-// export const metadata: Metadata = {
-//   title: {
-//     default: "Home",
-//     template: "%s | Eazy Cart",
-//   },
-//   description:
-//     "Shop a wide range of products with fast delivery. From tech to fashion, find everything you need in one place. Enjoy great deals and a seamless shopping experience with us.",
-// };
-
 export async function generateMetadata({
   params,
 }: {

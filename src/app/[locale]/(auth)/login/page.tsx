@@ -32,7 +32,7 @@ const LoginPage = async () => {
       <section className="flex-center w-full flex-col bg-background pt-12 lg:w-1/2">
         <div className="container md:px-16">
           <div className="flex-center">
-            <Logo width={200} height={125} />
+            <Logo width={175} height={100} />
           </div>
 
           <h2 className="flex-center mb-8 mt-2 gap-2 text-4xl font-bold">

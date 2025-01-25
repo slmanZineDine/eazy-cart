@@ -10,6 +10,25 @@ import { getProduct } from "@/services/products";
 import { CURRENCY } from "@/constants";
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}): Promise<Metadata> {
+  const productId = (await params).productId;
+  const product = await getProduct({ id: productId });
+
+  return {
+    title: { absolute: product.title },
+    description: product.description,
+
+    openGraph: {
+      images: [{ url: product.image, alt: product.title }],
+    },
+  };
+}
 
 const ProductPage = async ({
   params,
