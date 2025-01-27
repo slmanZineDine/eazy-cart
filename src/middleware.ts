@@ -1,35 +1,25 @@
-import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-import { match as matchLocale } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
-import { i18n } from "./i18n.config";
-import { cookies } from "next/headers";
+// Utils
+import protectRoute from "./utils/protect-routes";
+// Libs
+import getLocale from "./libs/negotiator";
+import { getSession } from "./libs/iron-session";
+// Data
 import { paths } from "./constants/paths";
-import { getUserRole } from "./utils/auth";
 import { UserRole } from "./constants/enums";
+import { i18n, Locale } from "./i18n.config";
 
-function getLocale(request: NextRequest): string {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-
-  const locales = i18n.locales;
-  let locale = "";
-
-  try {
-    locale = matchLocale(languages, locales, i18n.defaultLocale);
-  } catch {
-    locale = i18n.defaultLocale;
-  }
-  return locale;
-}
+const ONLY_ADMIN = [paths.dashboard.root];
+const PRIVATE_ROUTES = [paths.dashboard.root, paths.profile.root];
 
 export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
 
   const { pathname } = request.nextUrl;
 
+  // =================== i18n ===================
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}`),
   );
@@ -41,26 +31,27 @@ export async function middleware(request: NextRequest) {
 
     return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
-
   const parsedUrl = new URL(request.url);
-  const locale = parsedUrl.pathname.split("/")[1];
+  const locale = parsedUrl.pathname.split("/")[1] as Locale;
   requestHeaders.set("x-locale", locale);
 
-  const isLogged = (await cookies()).has("theToken");
-  const role = await getUserRole();
+  // =================== Protect Routes ===================
+  const { isLoggedIn, role } = await getSession();
 
-  if (isLogged && pathname === `/${locale}/${paths.login}`) {
-    return NextResponse.redirect(new URL(`/${locale}/`, request.url));
+  if (isLoggedIn && pathname === `/${locale}/${paths.login}`) {
+    return NextResponse.redirect(
+      new URL(`/${locale}/${paths.home.root}`, request.url),
+    );
+  } else if (!isLoggedIn && protectRoute(locale, PRIVATE_ROUTES, pathname)) {
+    return NextResponse.redirect(
+      new URL(`/${locale}/${paths.home.root}`, request.url),
+    );
   }
-  if (!isLogged && pathname === `/${locale}/${paths.profile.root}`) {
-    return NextResponse.redirect(new URL(`/${locale}/`, request.url));
-  }
-  if (
-    isLogged &&
-    pathname === `/${locale}/${paths.dashboard.root}` &&
-    role !== UserRole.ADMIN
-  ) {
-    return NextResponse.redirect(new URL(`/${locale}/`, request.url));
+
+  if (role !== UserRole.ADMIN && protectRoute(locale, ONLY_ADMIN, pathname)) {
+    return NextResponse.redirect(
+      new URL(`/${locale}/${paths.home.root}`, request.url),
+    );
   }
 
   return NextResponse.next({

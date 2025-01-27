@@ -2,21 +2,23 @@
 import CustomLink from "../custom-link";
 // Thrid-Party =====> shadcn-ui
 import { buttonVariants } from "@/components/ui/button";
-// Data
-import { paths } from "@/constants/paths";
-import { isUserlogged } from "@/utils/auth";
+// Utils
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+// Libs
+import { getSession } from "@/libs/iron-session";
+// Data
+import { paths } from "@/constants/paths";
 
 const LoginButton = async ({ className = "" }: { className?: string }) => {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
   const { navbar } = await getDictionary(locale);
 
-  // ################### UTILS ###################
-  const isLogged = await isUserlogged();
+  // ################### IRON SESSION ###################
+  const { isLoggedIn } = await getSession();
 
-  if (isLogged) {
+  if (isLoggedIn) {
     return <></>;
   } else {
     return (

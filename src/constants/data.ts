@@ -5,17 +5,25 @@ export const APP_LANGUAGES = {
   English: Languages.ENGLISH,
 };
 
-export const USERS = {
-  slman: {
+export const PASSWORD = "12345678";
+
+export const USERS = [
+  {
     username: "slman",
     name: "Slman Zinedine",
     role: UserRole.USER,
     email: "slman@email.com",
+    password: PASSWORD,
   },
-  admin: {
+  {
     username: "admin",
     name: "Eazy Cart Admin",
     role: UserRole.ADMIN,
     email: "admin@email.com",
+    password: PASSWORD,
   },
-};
+];
+
+export function getUserByUsername(username: string) {
+  return USERS.find((user) => user.username === username);
+}

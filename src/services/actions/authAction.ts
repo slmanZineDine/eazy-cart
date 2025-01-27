@@ -1,16 +1,17 @@
 "use server";
 
-import { USERS } from "@/constants/data";
-import { paths } from "@/constants/paths";
+// Next
+import { redirect } from "next/navigation";
+// Utils
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+// Lib
+import { getSession } from "@/libs/iron-session";
+// Data
+import { paths } from "@/constants/paths";
+import { getUserByUsername, PASSWORD } from "@/constants/data";
 
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-
-const PASSWORD = "12345678";
-
-export async function authAction(_: any, formData: FormData) {
+export async function login(_: any, formData: FormData) {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const locale = await getCurrentLocale();
@@ -30,29 +31,30 @@ export async function authAction(_: any, formData: FormData) {
     return { errors: { password: errors.password }, data };
   }
 
-  if (username !== USERS[username].username || password !== PASSWORD) {
+  // Connect to backend
+  const user = getUserByUsername(username);
+
+  if (!user || user.password !== PASSWORD) {
     return {
       errors: { responseErr: errors.loginErr },
       data,
     };
   }
 
-  (await cookies()).set("theToken", crypto.randomUUID(), {
-    httpOnly: true,
-    secure: true,
-    expires: new Date(Date.now() + 1000 * 60 * 60), // 1 Hour
-  });
-  (await cookies()).set("theRole", USERS[username].role, {
-    httpOnly: true,
-    secure: true,
-    expires: new Date(Date.now() + 1000 * 60 * 60), // 1 Hour
-  });
+  // Store Session
+  const session = await getSession();
+
+  session.username = user.username;
+  session.role = user.role;
+  session.isLoggedIn = true;
+
+  await session.save();
 
   redirect(`/${locale}/${paths.home.root}`);
 }
 
 export async function logout() {
-  (await cookies()).delete("theToken");
-  (await cookies()).delete("theRole");
+  const session = await getSession();
+  session.destroy();
   redirect(`/${paths.home.root}`);
 }

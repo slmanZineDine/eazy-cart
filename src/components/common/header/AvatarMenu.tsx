@@ -1,22 +1,34 @@
+// Third-Party =====> shadcn-ui
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-import LogoutButton from "./LogoutButton";
+// My-Components
 import CustomLink from "../custom-link";
-import { Skeleton } from "@/components/ui/skeleton";
-import { paths } from "@/constants/paths";
-import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+import LogoutButton from "./LogoutButton";
+// Utils
 import getDictionary from "@/utils/translation";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+// Libs
+import { getSession } from "@/libs/iron-session";
+// Data
+import { paths } from "@/constants/paths";
+import { getUserByUsername } from "@/constants/data";
 
 const AvatarMenu = async () => {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
   const { common } = await getDictionary(locale);
+
+  // ################### IRON SESSION ###################
+  const { username } = await getSession();
+
+  // ################### USER ###################
+  const user = getUserByUsername(username);
 
   return (
     <DropdownMenu>
@@ -34,8 +46,8 @@ const AvatarMenu = async () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem className="cursor-pointer flex-col py-4 hover:!bg-transparent">
-          <h2 className="text-lg font-bold text-primary">Slman Zinedine</h2>
-          <p>example@email.com</p>
+          <h2 className="text-lg font-bold text-primary">{user?.name}</h2>
+          <p>{user?.email}</p>
         </DropdownMenuItem>
         <DropdownMenuItem className="mb-2 border-y hover:!bg-muted">
           <CustomLink

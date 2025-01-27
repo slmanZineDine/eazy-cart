@@ -2,22 +2,23 @@
 import Logo from "./Logo";
 import Navbar from "./Navbar";
 import CartButton from "./CartButton";
+import AvatarMenu from "./AvatarMenu";
 import LoginButton from "./LoginButton";
 import ThemeSwitcher from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+// Utils
 import getDictionary from "@/utils/translation";
-import AvatarMenu from "./AvatarMenu";
-import { getUserRole, isUserlogged } from "@/utils/auth";
+import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
+// Libs
+import { getSession } from "@/libs/iron-session";
 
 const Header = async () => {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
   const { navbar } = await getDictionary(locale);
 
-  // ################### UTILS ###################
-  const isLogged = await isUserlogged();
-  const role = await getUserRole();
+  // ################### IRON SESSION ###################
+  const { isLoggedIn, role } = await getSession();
 
   return (
     <header className="fixed inset-x-0 bottom-4 z-40 w-full rounded-full bg-background drop-shadow-md transition-[bottom] duration-500 min700:bottom-[calc(100%-var(--header-height))] min700:rounded-none">
@@ -32,7 +33,7 @@ const Header = async () => {
           <ThemeSwitcher />
           <LanguageSwitcher />
           <CartButton />
-          {isLogged && <AvatarMenu />}
+          {isLoggedIn && <AvatarMenu />}
           <LoginButton className="ms-2 hidden min700:block" />
         </div>
       </nav>
