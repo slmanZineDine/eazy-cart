@@ -7,7 +7,8 @@ export const defaultSession: SessionData = {
 };
 
 export const sessionOptions: SessionOptions = {
-  password: "complex_password_at_least_32_characters_long",
+  // TODO: Add password to .env file
+  password: "J3vL#29w^7ks!mRzVp0b@Xy#jKs8Fw1u",
   cookieName: "session",
   cookieOptions: {
     httpOnly: true,
