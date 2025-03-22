@@ -1,8 +1,11 @@
+// Third-Party =====> motion
+import * as motion from "motion/react-client";
 // My-Components
 import Product from "@/components/common/product";
 // API
 import { getAllProducts, getProductsByCategroy } from "@/services/products";
-import { TProduct } from "@/types/product";
+// Types
+import type { TProduct } from "@/types/product";
 
 const Products = async ({
   category,
@@ -12,18 +15,31 @@ const Products = async ({
   // page: number;
 }) => {
   // ################### FETCH DATA ###################
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   let products: TProduct[] = [];
 
   if (category && category !== "All")
     products = await getProductsByCategroy({ category });
-  else products = await getAllProducts({ limit: 4 });
+  else products = await getAllProducts({ limit: 8 });
 
   return (
     <div className="grid grid-cols-autoFill250 gap-4">
       {products.map((product) => (
-        <Product key={product.id} product={product} />
+        <motion.div
+          initial={{ y: 10, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.2,
+            delay: 0.5,
+            type: "spring",
+            stiffness: 100,
+          }}
+          key={product.id}
+          className="h-full"
+        >
+          <Product product={product} />
+        </motion.div>
       ))}
     </div>
   );

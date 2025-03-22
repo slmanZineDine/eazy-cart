@@ -1,11 +1,13 @@
-// Third-Party =====> shadcn-ui
+// Next
+import Image from "next/image";
+// Third-Party =====> motion
+import * as motion from "motion/react-client";
 // My-Components
-import SectionTitle from "@/components/common/section-title";
 import SocialMedia from "@/components/common/social-media";
+import SectionTitle from "@/components/common/section-title";
+// Utils
 import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
-
-import Image from "next/image";
 
 const Employees = async () => {
   // ################### i18n ###################
@@ -64,7 +66,18 @@ const Employees = async () => {
         />
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {employees.map((employee) => (
-            <div key={employee.id} className="group relative overflow-hidden">
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              transition={{
+                duration: 0.2,
+                delay: 0.5,
+                type: "spring",
+                stiffness: 100,
+              }}
+              whileInView={{ y: 0, opacity: 1 }}
+              key={employee.id}
+              className="group relative overflow-hidden"
+            >
               <div className="flex-center absolute bottom-0 z-10 flex h-0 w-full flex-col gap-2 bg-black/60 text-white transition-[height] duration-700 group-hover:h-full">
                 <h3 className="pt-64 text-2xl font-bold">{employee.name}</h3>
                 <p>{employee.jobTitle}</p>
@@ -77,7 +90,7 @@ const Employees = async () => {
                 alt={employee.name}
                 className="transition-transform duration-300 group-hover:scale-105"
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

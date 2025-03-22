@@ -7,6 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+// Third-Party =====> motion
+import * as motion from "motion/react-client";
 // My-Components
 import SectionTitle from "@/components/common/section-title";
 // Icons
@@ -53,29 +55,38 @@ const Features = async () => {
           hasSubTitle={true}
           subTitle={common.subTitle}
         />
-        <div className="mt-16 grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <Card
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              transition={{
+                duration: 0.2,
+                delay: 0.5,
+                type: "spring",
+                stiffness: 100,
+              }}
+              whileInView={{ y: 0, opacity: 1 }}
               key={feature.id}
-              className="relative rounded-md border border-secondary"
             >
-              <div className="flex-center absolute left-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary bg-background text-primary">
-                {feature.icon}
-              </div>
-              <CardHeader className="pt-12">
-                <CardTitle className="text-center text-xl font-bold text-secondary">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-center text-md">{common.boxDescription}</p>
-              </CardContent>
-              <CardFooter>
-                <Button className="mx-auto bg-[#d4eee2] text-primary hover:bg-[#d4eee2]/90">
-                  {common.readMore}
-                </Button>
-              </CardFooter>
-            </Card>
+              <Card className="relative rounded-md border border-secondary">
+                <div className="flex-center absolute left-1/2 size-16 -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary bg-background text-primary">
+                  {feature.icon}
+                </div>
+                <CardHeader className="pt-12">
+                  <CardTitle className="text-center text-xl font-bold text-secondary">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-center text-md">{common.boxDescription}</p>
+                </CardContent>
+                <CardFooter>
+                  <Button className="mx-auto bg-[#d4eee2] text-primary hover:bg-[#d4eee2]/90">
+                    {common.readMore}
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

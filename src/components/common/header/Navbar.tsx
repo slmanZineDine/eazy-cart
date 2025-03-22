@@ -100,7 +100,7 @@ const Navbar = ({
                   onClick={() => setIsOpen(false)}
                 >
                   <Link
-                    className={`${pathName === link.href ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
+                    className={`${pathName === `/${locale}/${link.href}` ? "text-secondary" : ""} flex-center flex-col whitespace-nowrap p-2 font-semibold text-muted-foreground transition-colors hover:text-secondary min700:h-full`}
                     href={`/${locale}/${link.href}`}
                   >
                     {link.icon}

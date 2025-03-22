@@ -6,12 +6,14 @@ export default function getCartQuanties(cart: TCartProduct[]) {
 }
 
 export const getSubTotal = (cart: TCartProduct[]) => {
-  return cart.reduce(
-    (total, product) => (total += product.basePrice * product.quantity!),
-    0,
-  );
+  return +cart
+    .reduce(
+      (total, product) => (total += product.basePrice * product.quantity!),
+      0,
+    )
+    .toFixed(2);
 };
 
 export const getTotal = (cart: TCartProduct[]) => {
-  return getSubTotal(cart) - 12;
+  return +(getSubTotal(cart) - 12).toFixed(2);
 };

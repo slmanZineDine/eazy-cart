@@ -30,7 +30,7 @@ const Product = async ({ product }: TProdcutProps) => {
   const { common } = await getDictionary(locale);
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex h-full flex-col">
       <CardHeader>
         <CustomLink
           href={`${paths.products.root}/${product.id}`}
