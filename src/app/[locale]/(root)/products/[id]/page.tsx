@@ -1,6 +1,5 @@
 // Next
 import Image from "next/image";
-import { Metadata } from "next";
 // My-Components
 import SocialMedia from "@/components/common/social-media";
 import StarsRating from "@/components/common/rating/StarsRating";
@@ -9,9 +8,50 @@ import AddToCartBtn from "@/components/common/product/AddToCartBtn";
 import { getAllProducts, getProduct } from "@/services/products";
 // Utils
 import getDictionary from "@/utils/translation";
-import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 // Data
 import { CURRENCY } from "@/constants";
+import { createEnhancedMetadata } from "@/utils/seo/meta/enhanced-meta";
+import { fmt } from "@/utils/translation/utils";
+import { type Locale } from "@/i18n.config";
+
+interface Props {
+  params: Promise<{ locale: Locale; id: string }>;
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale: lang, id } = await params;
+  const {
+    siteMeta: dict,
+    notFound: dictNotFound,
+    common: commonDict,
+  } = await getDictionary(lang);
+
+  try {
+    const product = await getProduct({ id });
+
+    const metaData = createEnhancedMetadata({
+      lang,
+      title: { absolute: product.title || dict.title.product },
+      description: product.description || dict.description.product,
+      pathname: `/products/${product.id}`,
+      keywords: [product.category],
+      type: "article",
+      image: product.image,
+      openGraphOverrides: {
+        section: product.category,
+      },
+    });
+
+    return metaData;
+  } catch {
+    return {
+      title: fmt(dictNotFound.entity.title, { entity: commonDict.product }),
+      description: fmt(dictNotFound.entity.description, {
+        entity: commonDict.product,
+      }),
+    };
+  }
+}
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
@@ -23,38 +63,15 @@ export async function generateStaticParams() {
     .slice(0, 20);
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ productId: string }>;
-}): Promise<Metadata> {
-  const productId = (await params).productId;
-  const product = await getProduct({ id: productId });
-
-  return {
-    title: { absolute: product.title },
-    description: product.description,
-
-    openGraph: {
-      images: [{ url: product.image, alt: product.title }],
-    },
-  };
-}
-
-const ProductPage = async ({
-  params,
-}: {
-  params: Promise<{ productId: string }>;
-}) => {
+async function ProductPage({ params }: Props) {
   // ################### NEXT ###################
-  const productId = (await params).productId;
+  const { locale: lang, id } = await params;
 
   // ################### i18n ###################
-  const locale = await getCurrentLocale();
-  const { common } = await getDictionary(locale);
+  const { common } = await getDictionary(lang);
 
   // ################### FETCH DATA ###################
-  const product = await getProduct({ id: productId });
+  const product = await getProduct({ id });
 
   return (
     <section className="section-padding">
@@ -84,7 +101,7 @@ const ProductPage = async ({
             </p>
           </div>
           <AddToCartBtn
-            locale={locale}
+            locale={lang}
             translations={common}
             product={product}
             className="w-full"
@@ -99,6 +116,6 @@ const ProductPage = async ({
       </div>
     </section>
   );
-};
+}
 
 export default ProductPage;

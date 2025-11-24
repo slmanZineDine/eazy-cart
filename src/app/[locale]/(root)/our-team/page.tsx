@@ -1,5 +1,3 @@
-// Next
-import { Metadata } from "next";
 // My-Components
 import Employees from "./_components/Employees";
 import TextImage from "@/components/common/text-image";
@@ -9,20 +7,27 @@ import getDictionary from "@/utils/translation";
 import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 // Data
 import { Locale } from "@/i18n.config";
+import { createEnhancedMetadata } from "@/utils/seo/meta/enhanced-meta";
 
-export async function generateMetadata({
-  params,
-}: {
+interface Props {
   params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const locale = (await params).locale;
-
-  const { navbar } = await getDictionary(locale);
-
-  return { title: navbar.ourTeam };
 }
 
-const OurTeamPage = async () => {
+export async function generateMetadata({ params }: Props) {
+  const { locale: lang } = await params;
+  const { siteMeta: dict } = await getDictionary(lang);
+
+  const metaData = createEnhancedMetadata({
+    lang,
+    title: dict.title.team,
+    description: dict.description.team,
+    pathname: "/our-team",
+  });
+
+  return metaData;
+}
+
+export default async function TeamPage() {
   // ################### i18n ###################
   const locale = await getCurrentLocale();
   const { ourTeam } = await getDictionary(locale);
@@ -39,6 +44,4 @@ const OurTeamPage = async () => {
       <Employees />
     </>
   );
-};
-
-export default OurTeamPage;
+}

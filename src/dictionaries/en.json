@@ -1,4 +1,28 @@
 {
+  "siteMeta": {
+    "siteName": "Eazy Cart",
+    "title": {
+      "home": "Eazy Cart | Your Best Online Store for Easy & Fast Shopping",
+      "about": "About Us - Trusted Online Shopping Platform",
+      "team": "Our Team - E-Commerce Experts",
+      "contact": "Contact Us - 24/7 Customer Support",
+      "product": "Product - Product Details & Best Prices",
+      "products": "Shop Products - Best Deals & Top Items",
+      "cart": "Shopping Cart - Checkout Easily",
+      "categories": "Categories - Shop by Category"
+    },
+    "description": {
+      "home": "Welcome to Eazy Cart, your trusted platform for easy, fast, and affordable online shopping.",
+      "about": "Learn more about Eazy Cart and our mission to deliver an exceptional shopping experience.",
+      "team": "Meet the dedicated team behind Eazy Cart’s success.",
+      "contact": "Reach out to us for any inquiries or support — we’re here to help.",
+      "product": "View full product details, specifications, and the best prices on Eazy Cart. Shop now for a fast and easy shopping experience.",
+      "products": "Browse our wide selection of carefully curated products.",
+      "cart": "View the items in your shopping cart and proceed to checkout effortlessly.",
+      "categories": "Explore our products by category for a faster and easier shopping experience."
+    }
+  },
+
   "home": {
     "hero": {
       "title": "Online Store Of",
@@ -132,6 +156,20 @@
     "subTitle": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta quos temporibus blanditiis praesentium.",
     "paragraphOne": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque, id necessitatibus ipsam suscipit quibusdam sint sit ratione adipisci et delectus eaque officia, animi temporibus iure magni, totam nostrum minus sunt?",
     "paragraphTwo": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam fuga maiores in eos totam non, molestiae alias asperiores magni adipisci explicabo cupiditate est mollitia deserunt provident! Rerum reprehenderit in alias ducimus eum eaque laudantium quaerat commodi similique voluptatum ad temporibus, recusandae reiciendis corporis mollitia. Molestias hic sapiente quaerat distinctio atque!",
-    "boxDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quos deserunt alias consequatur labore quod placeat."
+    "boxDescription": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo quos deserunt alias consequatur labore quod placeat.",
+    "product": "product",
+    "products": "products"
+  },
+  "notFound": {
+    "meta": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for does not exist or has been moved",
+      "goHome": "Go to Homepage"
+    },
+    "entity": {
+      "title": "{{entity}} not found",
+      "description": "The requested {{entity}} could not be found",
+      "browse": "Browse {{entity}}"
+    }
   }
 }

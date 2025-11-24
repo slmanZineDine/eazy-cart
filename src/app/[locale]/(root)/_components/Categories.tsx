@@ -75,7 +75,7 @@ const Categories = ({
       }}
       className="mx-8 mb-10"
     >
-      <CarouselContent className="group p-2">
+      <CarouselContent className="group cursor-grab select-none p-2 active:cursor-grabbing">
         {categories.map((category, index) => (
           <CarouselItem key={category.id} className="basis-40">
             <Link

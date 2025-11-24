@@ -4,25 +4,32 @@ import Statistics from "./_components/Statistics";
 import TextImage from "@/components/common/text-image";
 import SectionTitle from "@/components/common/section-title";
 import getDictionary from "@/utils/translation";
-import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
-import { Metadata } from "next";
+
 import { Locale } from "@/i18n.config";
+import { createEnhancedMetadata } from "@/utils/seo/meta/enhanced-meta";
 
-export async function generateMetadata({
-  params,
-}: {
+interface Props {
   params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const locale = (await params).locale;
-
-  const { navbar } = await getDictionary(locale);
-
-  return { title: navbar.about };
 }
 
-const AboutPage = async () => {
+export async function generateMetadata({ params }: Props) {
+  const { locale: lang } = await params;
+  const { siteMeta: dict } = await getDictionary(lang);
+
+  const metaData = createEnhancedMetadata({
+    lang,
+    title: dict.title.about,
+    description: dict.description.about,
+    pathname: "/about",
+  });
+
+  return metaData;
+}
+
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+
   // ################### i18n ###################
-  const locale = await getCurrentLocale();
   const { about } = await getDictionary(locale);
 
   return (
@@ -38,6 +45,4 @@ const AboutPage = async () => {
       <Statistics />
     </>
   );
-};
-
-export default AboutPage;
+}

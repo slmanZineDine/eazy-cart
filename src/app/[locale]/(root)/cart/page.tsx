@@ -1,28 +1,33 @@
-// Next
-import { Metadata } from "next";
 // My-Components
 import CartView from "./_components/CartView";
 // Utils
 import getDictionary from "@/utils/translation";
-import { getCurrentLocale } from "@/utils/translation/getCurrentLocale";
 // Data
 import { Locale } from "@/i18n.config";
+import { createEnhancedMetadata } from "@/utils/seo/meta/enhanced-meta";
 
-export async function generateMetadata({
-  params,
-}: {
+interface Props {
   params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const locale = (await params).locale;
-
-  const { cart } = await getDictionary(locale);
-
-  return { title: cart.cartTitle };
 }
 
-const CartPage = async () => {
+export async function generateMetadata({ params }: Props) {
+  const { locale: lang } = await params;
+  const { siteMeta: dict } = await getDictionary(lang);
+
+  const metaData = createEnhancedMetadata({
+    lang,
+    title: dict.title.team,
+    description: dict.description.team,
+    pathname: "/cart",
+  });
+
+  return metaData;
+}
+
+export default async function CartPage({ params }: Props) {
+  const { locale } = await params;
+
   // ################### i18n ###################
-  const locale = await getCurrentLocale();
   const { cart } = await getDictionary(locale);
 
   return (
@@ -30,6 +35,4 @@ const CartPage = async () => {
       <CartView translations={cart} />
     </>
   );
-};
-
-export default CartPage;
+}

@@ -27,14 +27,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const locale = (await params).locale;
 
-  const { home, navbar } = await getDictionary(locale);
+  const { siteMeta: dict } = await getDictionary(locale);
 
   return {
     title: {
-      default: navbar.home,
-      template: "%s | Eazy Cart",
+      default: dict.title.home,
+      template: `%s | ${dict.siteName}`,
     },
-    description: home.hero.description,
+    description: dict.description.home,
   };
 }
 
@@ -54,7 +54,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className={`${cairo.className} antialiased`}>
-        <NextTopLoader color="#26c97d" />
+        <NextTopLoader color="#26c97d" showSpinner={false} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -1,5 +1,3 @@
-// Next
-import { Metadata } from "next";
 // My-Components
 import ContactForm from "./_components/ContactForm";
 import ContactServices from "./_components/ContactServices";
@@ -7,26 +5,31 @@ import ContactServices from "./_components/ContactServices";
 import getDictionary from "@/utils/translation";
 // Data
 import { Locale } from "@/i18n.config";
+import { createEnhancedMetadata } from "@/utils/seo/meta/enhanced-meta";
 
-export async function generateMetadata({
-  params,
-}: {
+interface Props {
   params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const locale = (await params).locale;
-
-  const { navbar } = await getDictionary(locale);
-
-  return { title: navbar.contact };
 }
 
-const ContactPage = () => {
+export async function generateMetadata({ params }: Props) {
+  const { locale: lang } = await params;
+  const { siteMeta: dict } = await getDictionary(lang);
+
+  const metaData = createEnhancedMetadata({
+    lang,
+    title: dict.title.contact,
+    description: dict.description.contact,
+    pathname: "/contact",
+  });
+
+  return metaData;
+}
+
+export default async function ContactPage() {
   return (
     <>
       <ContactServices />
       <ContactForm />
     </>
   );
-};
-
-export default ContactPage;
+}
