@@ -1,6 +1,7 @@
+import { i18n } from "@/i18n.config";
 import type { Metadata } from "next";
-import type { EnhancedSeoInput } from "./enhanced-meta";
 import SITE_CONFIG from "../site.config";
+import type { EnhancedSeoInput } from "./enhanced-meta";
 
 /**
  * Helper to build OpenGraph metadata.
@@ -12,8 +13,6 @@ export function buildOpenGraph({
   type = "website",
   image,
   pathname,
-  publishedTime,
-  modifiedTime,
   authors,
   openGraphOverrides = {},
 }: EnhancedSeoInput & {
@@ -36,21 +35,19 @@ export function buildOpenGraph({
     ],
     siteName,
     url: `/${lang}${pathname}`,
-    locale: lang,
+    locale: i18n.defaultLocale, // the primary/default language of your website.
+    alternateLocale: i18n.locales.filter((lang) => lang === i18n.defaultLocale), // the other languages your site supports.
     type,
-    ...(publishedTime && { publishedTime }),
-    ...(modifiedTime && { modifiedTime }),
-    // If only one author is provided, use 'author' field
-    ...(authors &&
-      authors.length === 1 && {
-        author: authors[0].name,
-      }),
+    ...(type === "article" && {
+      // If only one author is provided, use 'author' field
+      ...(authors?.length === 1 && { author: authors[0].name }),
 
-    // If authors are provided, map them to the required format
-    ...(authors && {
-      authors: authors.map((author) =>
-        author.url ? `/${lang}${author.url}` : author.name,
-      ),
+      // If authors are provided, map them to the required format
+      ...(authors && {
+        authors: authors.map((author) =>
+          author.url ? `/${lang}${author.url}` : author.name,
+        ),
+      }),
     }),
     ...openGraphOverrides,
   };

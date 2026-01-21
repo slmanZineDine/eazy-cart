@@ -1,8 +1,8 @@
+import { type Locale } from "@/i18n.config";
 import type { Metadata } from "next";
+import SITE_CONFIG from "../site.config";
 import { buildOpenGraph } from "./buildOpenGraph";
 import { buildTwitter } from "./buildTwitter";
-import SITE_CONFIG from "../site.config";
-import { type Locale } from "@/i18n.config";
 
 /**
  * Input for enhanced SEO metadata generation.
@@ -14,10 +14,9 @@ export interface EnhancedSeoInput {
   type?: "website" | "article";
   image?: string;
   keywords?: string[];
-  publishedTime?: string;
-  modifiedTime?: string;
   authors?: { name: string; url?: string }[];
   pathname?: string;
+  mainOverrides?: Partial<Metadata>;
   openGraphOverrides?: Partial<Metadata["openGraph"]>;
   twitterOverrides?: Partial<Metadata["twitter"]>;
 }
@@ -36,16 +35,13 @@ export async function createEnhancedMetadata(
     description,
     type = "website",
     keywords = [],
-    publishedTime,
-    modifiedTime,
     authors,
     pathname = "",
+    image,
+    mainOverrides,
     openGraphOverrides,
     twitterOverrides,
-    image,
   } = input;
-
-  const { siteName, siteURL } = SITE_CONFIG;
 
   return {
     title,
@@ -57,8 +53,6 @@ export async function createEnhancedMetadata(
       description,
       type,
       image,
-      publishedTime,
-      modifiedTime,
       authors,
       pathname,
       openGraphOverrides,
@@ -69,7 +63,7 @@ export async function createEnhancedMetadata(
       image,
       twitterOverrides,
     }),
-    robots: { index: true, follow: true },
+
     alternates: {
       canonical: `/${lang}${pathname}`,
       languages: {
@@ -77,11 +71,13 @@ export async function createEnhancedMetadata(
         ar: `/ar${pathname}`,
       },
     },
-    ...(type === "article" &&
-      authors && {
-        authors,
-      }),
-    applicationName: siteName,
-    metadataBase: new URL(siteURL),
+    ...(authors && { authors }),
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/favicon.ico",
+    },
+    metadataBase: new URL(SITE_CONFIG.siteURL),
+    ...mainOverrides,
   };
 }

@@ -5,7 +5,7 @@ import SocialMedia from "@/components/common/social-media";
 import StarsRating from "@/components/common/rating/StarsRating";
 import AddToCartBtn from "@/components/common/product/AddToCartBtn";
 // API
-import { getAllProducts, getProduct } from "@/services/products";
+import { getProduct } from "@/services/products";
 // Utils
 import getDictionary from "@/utils/translation";
 // Data
@@ -53,15 +53,15 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 
-export async function generateStaticParams() {
-  const products = await getAllProducts();
+// export async function generateStaticParams() {
+//   const products = await getAllProducts();
 
-  return products
-    .map(({ id }) => ({
-      productId: `${id}`,
-    }))
-    .slice(0, 20);
-}
+//   return products
+//     .map(({ id }) => ({
+//       productId: `${id}`,
+//     }))
+//     .slice(0, 20);
+// }
 
 async function ProductPage({ params }: Props) {
   // ################### NEXT ###################
